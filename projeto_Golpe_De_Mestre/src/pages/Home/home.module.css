@@ -1,0 +1,64 @@
+.container{
+    width: 100%;
+    min-height: 100vh;
+}
+.p_banner{
+    color: #2FA8E8;
+    font-family: font-body;
+    font-weight: 800;
+    font-style: ExtraBold;
+    font-size: 12.8px;
+    leading-trim: NONE;
+    line-height: 20.48px;
+    letter-spacing: 0.26px;
+}
+.h1_banner{
+    width: 620px;
+    angle: 0 deg;
+    opacity: 1;
+    color: #F4F7F9;
+    font-family: Anton;
+    font-weight: 800;
+    font-style: Regular;
+    font-size: 70.6px;
+    leading-trim: NONE;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+
+}
+.p_banner2{
+    width: 494px;
+    height: 113px;
+    angle: 0 deg;
+    opacity: 1;
+    color: #F4F7F9C7;
+    font-family: font-body;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16.6px;
+    leading-trim: NONE;
+    line-height: 28.16px;
+    letter-spacing: 0px;
+
+}
+.banner{ 
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%; 
+    min-height: 550px; 
+    overflow: hidden; } 
+.video{ 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    z-index: 0; } 
+.conteudo{ 
+    position: relative; 
+    z-index: 2; 
+    margin-top: 80px;
+    margin-left: 80px;
+}
