@@ -3,11 +3,9 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background: linear-gradient(#0A0C10EB,#0A0C1000);
+    background-color: black;
     height: 80px;
     padding: 10px 16px ;
-    position: fixed;
-    z-index: 2;
 }
 .container_logo{
     display: flex;
@@ -67,19 +65,16 @@
     color: #2FA8E8;
 }
 .butao_doar{
-    width: 100px; 
+    width: 130px; 
     height: 40px;
     border: none;
     border-radius: 6px;
     background-color: #B4392C;
-    angle: 0 deg;
     opacity: 1;
     font-family: font-body;
     font-weight: 800;
     font-style: ExtraBold;
-    font-size: 13.6px;
-    leading-trim: NONE;
-    line-height: 21.76px;
+    font-size: 15px;
     letter-spacing: 0.27px;
     color: #FFFFFF;
     text-decoration: none;
