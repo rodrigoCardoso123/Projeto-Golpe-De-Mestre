@@ -1,8 +1,9 @@
-import estilo from "./home.module.css" 
-import Topo from "../../Componentes/Topo/topo"
+import estilo from "./home.module.css"
 import imgLogo from "../../assets/imgLogo.PNG"
 import barra from "../../assets/codigo_de_barra_projeto.png"
+import { useNavigate } from "react-router-dom"
 function Home(){ 
+    const navigate = useNavigate()
     return( 
     <> 
         <main className={estilo.container}> 
@@ -250,7 +251,7 @@ function Home(){
                         <p>Controle de presença, monitoramento de faixas, dados dos alunos e caixa financeiro da ONG.</p>
                     </div>
 
-                        <button>Acessar painel →</button>
+                        <button onClick={() => {navigate("/Login")}}>Acessar painel →</button>
                 </div>
             </section>
 
