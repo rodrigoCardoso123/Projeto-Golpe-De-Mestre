@@ -160,6 +160,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    width: fit-content;
     height: 44px;
     padding: 10px 16px;
     border-radius: 5px;
@@ -192,6 +193,7 @@
     gap: 6px;
     flex: 1;
     min-height: 84px;
+    border-radius: 0;
     padding: 16px 20px;
     border: none;
     border-right: 1px solid #E4E8EE;
