@@ -9,7 +9,7 @@ function Rotas() {
 
   const esconderTopo = 
   location.pathname === '/Login' ||
-  location.pathname === '/Dashboard';
+  location.pathname.startsWith('/Dashboard');
 
   return (
     <>

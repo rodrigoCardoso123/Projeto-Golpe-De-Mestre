@@ -44,43 +44,43 @@ function SideBar(){
                         </li>
 
                         <li> 
-                            <NavLink to="/Dashboard/combos" className={estilo.nav}>
+                            <NavLink to="/Dashboard/inscricoes" className={estilo.nav}>
                                 <LuFilePlus2 size={18}/> Inscrições e matrículas
                             </NavLink> 
                         </li>
 
                         <li> 
-                            <NavLink to="/Dashboard/orcamentos" className={estilo.nav}>
+                            <NavLink to="/Dashboard/alunos" className={estilo.nav}>
                                 <LuUsersRound size={18}/> Alunos
                             </NavLink> 
                         </li>
 
                         <li> 
-                            <NavLink to="/Dashboard/config" className={estilo.nav}>
+                            <NavLink to="/Dashboard/turmas" className={estilo.nav}>
                                 <LuLayers3 size={18}/> Turmas e horários
                             </NavLink> 
                         </li>
 
                         <li> 
-                            <NavLink to="/Dashboard/config" className={estilo.nav}>
+                            <NavLink to="/Dashboard/diario" className={estilo.nav}>
                                 <LuBookOpen size={18}/> Diário de aula
                             </NavLink> 
                         </li>
 
                         <li> 
-                            <NavLink to="/Dashboard/config" className={estilo.nav}>
+                            <NavLink to="/Dashboard/presenca" className={estilo.nav}>
                                 <LuCheck size={18}/> Presença
                             </NavLink> 
                         </li>
 
                         <li> 
-                            <NavLink to="/Dashboard/config" className={estilo.nav}>
+                            <NavLink to="/Dashboard/desenvolvimento" className={estilo.nav}>
                                 <LuPresentation size={18}/> Desenvolvimento
                             </NavLink> 
                         </li>
 
                         <li> 
-                            <NavLink to="/Dashboard/config" className={estilo.nav}>
+                            <NavLink to="/Dashboard/atividades" className={estilo.nav}>
                                 <LuClipboardList size={18}/> Atividades
                             </NavLink> 
                         </li>
