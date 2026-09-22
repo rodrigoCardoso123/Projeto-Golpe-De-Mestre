@@ -4,6 +4,7 @@ import SideBar from "../../Componentes/SideBar/sidebar";
 import VisaoGeral from "../../Componentes/Dashboard_Visão_Geral/visaoGeral";
 import Inscricoes from "../../Componentes/Dashboard_Inscricoes/inscricoes";
 import NovaInscricao from "../../Componentes/Dashboard_Inscricoes/novaInscricao";
+import Alunos from "../../Componentes/Dashboard_Alunos/alunos";
 function Dashboard(){
     return(
         <>
@@ -15,6 +16,7 @@ function Dashboard(){
                     <Route path="/" element={<VisaoGeral/>} />
                     <Route path="inscricoes" element={<Inscricoes/>} />
                     <Route path="inscricoes/nova" element={<NovaInscricao/>} />
+                    <Route path="alunos" element={<Alunos/>} />
                 </Routes>
             </main>
         </div>

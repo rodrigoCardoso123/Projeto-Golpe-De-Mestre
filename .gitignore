@@ -1,0 +1,15 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+
+# Vite
+.vite/
+
+# Logs e arquivos temporários
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
