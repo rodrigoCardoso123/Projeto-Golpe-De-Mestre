@@ -41,7 +41,7 @@
 
 .titulo_header strong {
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-size: 15px;
     line-height: 20.16px;
@@ -50,7 +50,7 @@
 .titulo_header p {
     margin: 0;
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 13px;
     line-height: 17.92px;
@@ -92,7 +92,7 @@
 
 .conteudo_perfil strong {
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 800;
     font-size: 14px;
     line-height: 15.29px;
@@ -100,7 +100,7 @@
 
 .conteudo_perfil small {
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 12px;
     line-height: 12.74px;
@@ -127,7 +127,7 @@
     cursor: pointer;
 
     color: #173F73;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 800;
     font-size: 12px;
     line-height: 16px;
@@ -137,7 +137,7 @@
 
 .breadcrumb span {
     color: #173F73;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 800;
     font-size: 12px;
     line-height: 16px;
@@ -160,7 +160,7 @@
 .container_titulo h1 {
     margin: 0;
     color: #1C1F24;
-    font-family: font-display;
+    font-family: var(--fonte-display);
     font-weight: 700;
     font-size: 42px;
     line-height: 48.3px;
@@ -170,7 +170,7 @@
 .container_titulo p {
     margin: 0;
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 14px;
     line-height: 22.4px;
@@ -178,7 +178,7 @@
 
 .container_titulo small {
     color: #9AA4B0;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 13px;
     line-height: 18px;
@@ -197,7 +197,7 @@
 .cartao h2 {
     margin: 0 0 22px 0;
     color: #1C1F24;
-    font-family: font-display;
+    font-family: var(--fonte-display);
     font-weight: 700;
     font-size: 23px;
     line-height: 26.57px;
@@ -223,7 +223,7 @@
 
 .campo label {
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-size: 13px;
     line-height: 17.6px;
@@ -247,7 +247,7 @@
     background-color: #FFFFFF;
 
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -267,7 +267,7 @@
     margin: -14px 0 22px 0;
 
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -286,7 +286,7 @@
 
 .area_arquivo strong {
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-size: 14px;
     line-height: 19.2px;
@@ -299,7 +299,7 @@
 .area_arquivo p {
     margin: 0;
     color: #9AA4B0;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 13px;
     line-height: 17.6px;
@@ -307,7 +307,7 @@
 
 .area_arquivo small {
     color: #9AA4B0;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
@@ -322,7 +322,7 @@
     cursor: pointer;
 
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-size: 13px;
     line-height: 17.6px;
@@ -350,7 +350,7 @@
     cursor: pointer;
 
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-size: 13px;
     line-height: 19.2px;
@@ -370,7 +370,7 @@
     cursor: pointer;
 
     color: #FFFFFF;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-size: 13px;
     line-height: 19.2px;

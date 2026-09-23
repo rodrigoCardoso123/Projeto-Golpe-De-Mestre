@@ -67,7 +67,7 @@
 }
 .menu h1{
     color: #99A5B6;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-style: Regular;
     font-size: 10px;
@@ -90,7 +90,7 @@
     transition: background 0.2s;
     text-decoration: none;
     color: #B0B8C2;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-style: Regular;
     font-size: 14px;
@@ -140,7 +140,7 @@
   border-radius: 4px;
 
   color: #173F73;
-  font-family: font-body;
+  font-family: var(--fonte-corpo);
   font-weight: 700;
   font-size: 11px;
   line-height: 14px;
@@ -154,7 +154,7 @@
 
 .rodape_sidebar strong {
   color: #F4F7F9;
-  font-family: font-body;
+  font-family: var(--fonte-corpo);
   font-weight: 700;
   font-size: 13px;
   line-height: 18px;
@@ -162,7 +162,7 @@
 
 .rodape_sidebar p span {
   color: #99A5B6;
-  font-family: font-body;
+  font-family: var(--fonte-corpo);
   font-weight: 400;
   font-size: 12px;
   line-height: 17px;

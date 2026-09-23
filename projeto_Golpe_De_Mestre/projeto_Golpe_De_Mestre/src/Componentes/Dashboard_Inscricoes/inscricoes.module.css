@@ -41,7 +41,7 @@
 
 .titulo_header strong {
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-size: 15px;
     line-height: 20.16px;
@@ -50,7 +50,7 @@
 .titulo_header p {
     margin: 0;
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 13px;
     line-height: 17.92px;
@@ -92,7 +92,7 @@
 
 .conteudo_perfil strong {
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 800;
     font-size: 14px;
     line-height: 15.29px;
@@ -100,7 +100,7 @@
 
 .conteudo_perfil small {
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 12px;
     line-height: 12.74px;
@@ -129,7 +129,7 @@
 
 .container_titulo strong {
     color: #173F73;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 800;
     font-size: 12px;
     line-height: 16.13px;
@@ -140,7 +140,7 @@
 .container_titulo h1 {
     margin: 0;
     color: #1C1F24;
-    font-family: font-display;
+    font-family: var(--fonte-display);
     font-weight: 700;
     font-size: 42px;
     line-height: 48.3px;
@@ -150,7 +150,7 @@
 .container_titulo p {
     margin: 0;
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 14px;
     line-height: 22.4px;
@@ -169,7 +169,7 @@
     cursor: pointer;
 
     color: #FFFFFF;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-size: 12px;
     line-height: 19.26px;
@@ -209,7 +209,7 @@
 
 .filtro strong {
     color: #1C1F24;
-    font-family: font-display;
+    font-family: var(--fonte-display);
     font-weight: 700;
     font-size: 28px;
     line-height: 32px;
@@ -218,7 +218,7 @@
 
 .filtro span {
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 13px;
     line-height: 17.6px;
@@ -253,7 +253,7 @@
 
 .campo label {
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-size: 13px;
     line-height: 17.6px;
@@ -269,7 +269,7 @@
     background-color: #FFFFFF;
 
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 14px;
 }
@@ -301,7 +301,7 @@
     background-color: #F8F9FB;
 
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 600;
     font-size: 12px;
     line-height: 16px;
@@ -315,7 +315,7 @@
     border-bottom: 1px solid #E4E8EE;
 
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -333,7 +333,7 @@
 
 .candidato strong {
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-size: 15px;
     line-height: 19.2px;
@@ -341,7 +341,7 @@
 
 .candidato span {
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
@@ -352,7 +352,7 @@
     display: inline-block;
     padding: 5px 10px;
     border-radius: 4px;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 600;
     font-size: 12px;
     line-height: 16px;
@@ -393,7 +393,7 @@
     cursor: pointer;
 
     color: #173F73;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-size: 14px;
     line-height: 19.2px;
@@ -404,7 +404,7 @@
     text-align: center;
 
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-size: 14px;
 }
 

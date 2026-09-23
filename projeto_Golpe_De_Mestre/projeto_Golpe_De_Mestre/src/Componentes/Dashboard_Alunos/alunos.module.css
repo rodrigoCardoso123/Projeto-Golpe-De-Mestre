@@ -30,7 +30,7 @@
 }
 .titulo_header strong{
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-style: Bold;
     font-size: 15px;
@@ -40,7 +40,7 @@
 }
 .titulo_header p{
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-style: Regular;
     font-size: 13px;
@@ -90,7 +90,7 @@
 }
 .conteudo_perfil strong{
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 800;
     font-style: Regular;
     font-size: 14px;
@@ -100,7 +100,7 @@
 }
 .conteudo_perfil small{
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-style: Regular;
     font-size: 12px;
@@ -143,7 +143,7 @@
 }
 .container_titulo_main strong{
     color: #173F73;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 800;
     font-style: ExtraBold;
     font-size: 12px;
@@ -154,7 +154,7 @@
 }
 .container_titulo_main h1{
     color: #1C1F24;
-    font-family: font-display;
+    font-family: var(--fonte-display);
     font-weight: 700;
     font-style: Bold;
     font-size: 42px;
@@ -163,7 +163,7 @@
 }
 .container_titulo_main p{
     color: #626B76;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 400;
     font-style: Regular;
     font-size: 14px;
@@ -181,7 +181,7 @@
     background-color: #173F73;
 
     color: #FFFFFF;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 700;
     font-style: Bold;
     font-size: 12px;
@@ -212,7 +212,7 @@
 }
 .container_form label{
     color: #1C1F24;
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-weight: 600;
     font-style: SemiBold;
     font-size: 13px;
@@ -264,7 +264,7 @@
     border-collapse: collapse;
     table-layout: fixed;
 
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
 }
 
 
@@ -282,7 +282,7 @@
 
     text-align: left;
 
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
     font-style: normal;
     font-weight: 700;
 
@@ -344,7 +344,7 @@
 
     border-bottom: 0.8px solid #E4E8EE;
 
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
     font-size: 11.62px;
     line-height: 19px;
 
@@ -411,7 +411,7 @@
 
     color: #173F73;
 
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
     font-size: 9.8px;
     font-weight: 800;
     line-height: 16px;
@@ -427,7 +427,7 @@
 }
 
 .informacoes_aluno strong {
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
 
     font-size: 11.62px;
     line-height: 19px;
@@ -438,7 +438,7 @@
 }
 
 .informacoes_aluno span {
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
 
     font-size: 9.8px;
     line-height: 16px;
@@ -481,7 +481,7 @@
 .faixa span {
     margin-left: 0;
 
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
 
     font-size: 11.62px;
     line-height: 19px;
@@ -531,7 +531,7 @@
 .presenca > span {
     min-width: 24px;
 
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
 
     font-size: 11.62px;
     line-height: 19px;
@@ -556,7 +556,7 @@
 
     border-radius: 4px;
 
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
 
     font-size: 9.8px;
     line-height: 15px;
@@ -577,7 +577,7 @@
 
     color: #173F73;
 
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
 
     font-size: 11.2px;
     line-height: 18px;
@@ -609,7 +609,7 @@
 .rodape_tabela > span {
     color: #626B76;
 
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-size: 12px;
     line-height: 17px;
 }
@@ -647,7 +647,7 @@
 .paginacao span {
     color: #626B76;
 
-    font-family: font-body;
+    font-family: var(--fonte-corpo);
     font-size: 12px;
     line-height: 17px;
 }
