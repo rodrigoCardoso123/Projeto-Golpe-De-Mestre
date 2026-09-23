@@ -1,12 +1,10 @@
 import estilo from "./alunos.module.css"
-import { useNavigate } from "react-router-dom";
-import {
-  LuBell
-} from "react-icons/lu";
+import { Link, useNavigate } from "react-router-dom";
+import { LuBell } from "react-icons/lu";
+import alunos from "./dadosAlunos.js";
 
-function Aluno(){
+function Alunos(){
     const navigate = useNavigate();
-
     const Hoje = new Date();
     return(
         <>
@@ -23,7 +21,7 @@ function Aluno(){
                     <div className={estilo.perfil_header}>
                         <LuBell size={22} className={estilo.icone_header} />
                         <div className={estilo.conteudo_perfil}>
-                            <p>GM</p>
+                            <p>CM</p>
                             <div>
                                 <strong>Coordenação</strong>
                                 <small>Administrador</small>
@@ -33,18 +31,19 @@ function Aluno(){
                 </header>
                 <section className={estilo.section_main}>
 
-                    <div className={estilo.container_titulo_main}>                        <div>
+                    <div className={estilo.container_titulo_main}>
+                        <div>
                             <strong>Área da equipe</strong>
                             <h1>Alunos</h1>
                             <p>Cadastros, vínculos e acompanhamento individual.</p>
                         </div>
-                        <button onClick={() => { navigate("/Dashboard/inscricoes/nova") }}>+  Nova inscrição</button>
+                        <button onClick={() => navigate("/Dashboard/alunos/novo")}>+  Novo aluno</button>
                     </div>
 
                     <div className={estilo.container_form}>
                         <div>
                             <label>Buscar Aluno</label>
-                            <input type="text" name="" id="" />
+                            <input type="text" name="" id="" placeholder="Nome do aluno" />
                         </div>
 
                         <div>
@@ -70,7 +69,6 @@ function Aluno(){
                                 <option value="">...</option>
                             </select>
                         </div>
-
                     </div>
 
                     <div className={estilo.container_tabela}>
@@ -88,428 +86,80 @@ function Aluno(){
                             </thead>
 
                             <tbody>
+                                {alunos.map((aluno) => (
+                                    <tr key={aluno.id}>
+                                        <td>
+                                            <div className={estilo.aluno}>
+                                                <div className={estilo.avatar}>{aluno.iniciais}</div>
 
-                                
-                                <tr>
-                                    <td>
-                                        <div className={estilo.aluno}>
-                                            <div className={estilo.avatar}>AD</div>
-
-                                            <div className={estilo.informacoes_aluno}>
-                                                <strong>Ana</strong>
-                                                <span>Infantil</span>
+                                                <div className={estilo.informacoes_aluno}>
+                                                    <strong>{aluno.nome}</strong>
+                                                    <span>{aluno.categoria}</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td>Turma A</td>
+                                        <td>{aluno.turma}</td>
 
-                                    <td>
-                                        <div className={estilo.faixa}>
-                                            <img
-                                                src="/Faixa - branca.png"
-                                                alt="Faixa branca"
-                                            />
-                                            <span>
-                                                Branca <small>· 0 graus</small>
-                                            </span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div className={estilo.presenca}>
-                                            <div className={estilo.barra}>
-                                                <div
-                                                    className={estilo.progresso}
-                                                    style={{ width: "88%" }}
-                                                ></div>
+                                        <td>
+                                            <div className={estilo.faixa}>
+                                                <img
+                                                    src={aluno.faixa.imagem}
+                                                    alt={`Faixa ${aluno.faixa.nome.toLowerCase()}`}
+                                                />
+                                                <span>
+                                                    {aluno.faixa.nome} <small>· {aluno.faixa.graus} {aluno.faixa.graus === 1 ? "grau" : "graus"}</small>
+                                                </span>
                                             </div>
+                                        </td>
 
-                                            <span>88%</span>
-                                        </div>
-                                    </td>
+                                        <td>
+                                            <div className={estilo.presenca}>
+                                                <div className={estilo.barra}>
+                                                    <div
+                                                        className={estilo.progresso}
+                                                        style={{ width: `${aluno.presenca}%` }}
+                                                    ></div>
+                                                </div>
 
-                                    <td>
-                                        <span className={estilo.ativo}>Ativo</span>
-                                    </td>
-
-                                    <td>
-                                        <a href="#" className={estilo.editar}>
-                                            Editar
-                                        </a>
-                                    </td>
-                                </tr>
-
-
-                                
-                                <tr>
-                                    <td>
-                                        <div className={estilo.aluno}>
-                                            <div className={estilo.avatar}>BD</div>
-
-                                            <div className={estilo.informacoes_aluno}>
-                                                <strong>Bruno</strong>
-                                                <span>Juvenil</span>
+                                                <span>{aluno.presenca}%</span>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td>Turma B</td>
+                                        <td>
+                                            <span className={estilo.ativo}>{aluno.situacao}</span>
+                                        </td>
 
-                                    <td>
-                                        <div className={estilo.faixa}>
-                                            <img
-                                                src="/Faixa - cinza.png"
-                                                alt="Faixa cinza"
-                                            />
-                                            <span>
-                                                Cinza <small>· 1 graus</small>
-                                            </span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div className={estilo.presenca}>
-                                            <div className={estilo.barra}>
-                                                <div
-                                                    className={estilo.progresso}
-                                                    style={{ width: "88%" }}
-                                                ></div>
-                                            </div>
-
-                                            <span>88%</span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <span className={estilo.ativo}>Ativo</span>
-                                    </td>
-
-                                    <td>
-                                        <a href="#" className={estilo.editar}>
-                                            Editar
-                                        </a>
-                                    </td>
-                                </tr>
-
-
-                                
-                                <tr>
-                                    <td>
-                                        <div className={estilo.aluno}>
-                                            <div className={estilo.avatar}>CD</div>
-
-                                            <div className={estilo.informacoes_aluno}>
-                                                <strong>Clara</strong>
-                                                <span>Infantil</span>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                    <td>Turma A</td>
-
-                                    <td>
-                                        <div className={estilo.faixa}>
-                                            <img
-                                                src="/Faixa - amarela.png"
-                                                alt="Faixa amarela"
-                                            />
-                                            <span>
-                                                Amarela <small>· 2 graus</small>
-                                            </span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div className={estilo.presenca}>
-                                            <div className={estilo.barra}>
-                                                <div
-                                                    className={estilo.progresso}
-                                                    style={{ width: "88%" }}
-                                                ></div>
-                                            </div>
-
-                                            <span>88%</span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <span className={estilo.ativo}>Ativo</span>
-                                    </td>
-
-                                    <td>
-                                        <a href="#" className={estilo.editar}>
-                                            Editar
-                                        </a>
-                                    </td>
-                                </tr>
-
-
-                               
-                                <tr>
-                                    <td>
-                                        <div className={estilo.aluno}>
-                                            <div className={estilo.avatar}>DD</div>
-
-                                            <div className={estilo.informacoes_aluno}>
-                                                <strong>Davi</strong>
-                                                <span>Juvenil</span>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                    <td>Turma B</td>
-
-                                    <td>
-                                        <div className={estilo.faixa}>
-                                            <img
-                                                src="/Faixa - laranja.png"
-                                                alt="Faixa laranja"
-                                            />
-                                            <span>
-                                                Laranja <small>· 3 graus</small>
-                                            </span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div className={estilo.presenca}>
-                                            <div className={estilo.barra}>
-                                                <div
-                                                    className={estilo.progresso}
-                                                    style={{ width: "88%" }}
-                                                ></div>
-                                            </div>
-
-                                            <span>88%</span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <span className={estilo.ativo}>Ativo</span>
-                                    </td>
-
-                                    <td>
-                                        <a href="#" className={estilo.editar}>
-                                            Editar
-                                        </a>
-                                    </td>
-                                </tr>
-
-
-                                
-                                <tr>
-                                    <td>
-                                        <div className={estilo.aluno}>
-                                            <div className={estilo.avatar}>ED</div>
-
-                                            <div className={estilo.informacoes_aluno}>
-                                                <strong>Elisa</strong>
-                                                <span>Infantil</span>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                    <td>Turma A</td>
-
-                                    <td>
-                                        <div className={estilo.faixa}>
-                                            <img
-                                                src="/Faixa - verde.png"
-                                                alt="Faixa verde"
-                                            />
-                                            <span>
-                                                Verde <small>· 0 graus</small>
-                                            </span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div className={estilo.presenca}>
-                                            <div className={estilo.barra}>
-                                                <div
-                                                    className={estilo.progresso}
-                                                    style={{ width: "88%" }}
-                                                ></div>
-                                            </div>
-
-                                            <span>88%</span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <span className={estilo.ativo}>Ativo</span>
-                                    </td>
-
-                                    <td>
-                                        <a href="#" className={estilo.editar}>
-                                            Editar
-                                        </a>
-                                    </td>
-                                </tr>
-
-
-                                
-                                <tr>
-                                    <td>
-                                        <div className={estilo.aluno}>
-                                            <div className={estilo.avatar}>FD</div>
-
-                                            <div className={estilo.informacoes_aluno}>
-                                                <strong>Felipe</strong>
-                                                <span>Juvenil</span>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                    <td>Turma B</td>
-
-                                    <td>
-                                        <div className={estilo.faixa}>
-                                            <img
-                                                src="/Faixa - branca.png"
-                                                alt="Faixa branca"
-                                            />
-                                            <span>
-                                                Branca <small>· 1 graus</small>
-                                            </span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div className={estilo.presenca}>
-                                            <div className={estilo.barra}>
-                                                <div
-                                                    className={estilo.progresso}
-                                                    style={{ width: "88%" }}
-                                                ></div>
-                                            </div>
-
-                                            <span>88%</span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <span className={estilo.ativo}>Ativo</span>
-                                    </td>
-
-                                    <td>
-                                        <a href="#" className={estilo.editar}>
-                                            Editar
-                                        </a>
-                                    </td>
-                                </tr>
-
-
-                               
-                                <tr>
-                                    <td>
-                                        <div className={estilo.aluno}>
-                                            <div className={estilo.avatar}>GD</div>
-
-                                            <div className={estilo.informacoes_aluno}>
-                                                <strong>Gabriela</strong>
-                                                <span>Infantil</span>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                    <td>Turma A</td>
-
-                                    <td>
-                                        <div className={estilo.faixa}>
-                                            <img
-                                                src="/Faixa - cinza.png"
-                                                alt="Faixa cinza"
-                                            />
-                                            <span>
-                                                Cinza <small>· 2 graus</small>
-                                            </span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div className={estilo.presenca}>
-                                            <div className={estilo.barra}>
-                                                <div
-                                                    className={estilo.progresso}
-                                                    style={{ width: "75%" }}
-                                                ></div>
-                                            </div>
-
-                                            <span>75%</span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <span className={estilo.ativo}>Ativo</span>
-                                    </td>
-
-                                    <td>
-                                        <a href="#" className={estilo.editar}>
-                                            Editar
-                                        </a>
-                                    </td>
-                                </tr>
-
-
-                                
-                                <tr>
-                                    <td>
-                                        <div className={estilo.aluno}>
-                                            <div className={estilo.avatar}>HD</div>
-
-                                            <div className={estilo.informacoes_aluno}>
-                                                <strong>Hugo</strong>
-                                                <span>Juvenil</span>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                    <td>Turma B</td>
-
-                                    <td>
-                                        <div className={estilo.faixa}>
-                                            <img
-                                                src="/Faixa - amarela.png"
-                                                alt="Faixa amarela"
-                                            />
-                                            <span>
-                                                Amarela <small>· 3 graus</small>
-                                            </span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div className={estilo.presenca}>
-                                            <div className={estilo.barra}>
-                                                <div
-                                                    className={estilo.progresso}
-                                                    style={{ width: "75%" }}
-                                                ></div>
-                                            </div>
-
-                                            <span>75%</span>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <span className={estilo.ativo}>Ativo</span>
-                                    </td>
-
-                                    <td>
-                                        <a href="#" className={estilo.editar}>
-                                            Editar
-                                        </a>
-                                    </td>
-                                </tr>
-
+                                        <td>
+                                            <Link
+                                                to={`/Dashboard/alunos/perfil/${aluno.id}`}
+                                                className={estilo.editar}
+                                            >
+                                                Editar
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
+                    </div>
+
+                    <div className={estilo.rodape_tabela}>
+                        <span>{alunos.length} aluno(s) encontrado(s)</span>
+
+                        <div className={estilo.paginacao}>
+                            <button type="button" aria-label="Página anterior">
+                                ←
+                            </button>
+                            <span>1 / 2</span>
+                            <button type="button" aria-label="Próxima página">
+                                →
+                            </button>
+                        </div>
                     </div>
                 </section>
             </main>
         </>
     )
 }
-export default Aluno;
+export default Alunos;

@@ -568,3 +568,60 @@
 .editar:hover {
     color: #0f315c;
 }
+
+
+
+/* Rodapé da tabela */
+.rodape_tabela {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 16px;
+}
+
+.rodape_tabela > span {
+    color: #626B76;
+
+    font-family: font-body;
+    font-size: 12px;
+    line-height: 17px;
+}
+
+.paginacao {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.paginacao button {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #C9D2DC;
+    border-radius: 4px;
+    background: #FFFFFF;
+
+    color: #1C1F24;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.paginacao button:hover {
+    border-color: #173F73;
+    color: #173F73;
+}
+
+.paginacao span {
+    color: #626B76;
+
+    font-family: font-body;
+    font-size: 12px;
+    line-height: 17px;
+}

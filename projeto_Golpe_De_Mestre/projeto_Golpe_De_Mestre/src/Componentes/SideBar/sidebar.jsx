@@ -20,7 +20,20 @@ import {
   LuUserRoundCheck,
   LuSun
 } from "react-icons/lu";
-import { CiGrid41 } from "react-icons/ci";
+
+function ItemMenu({ to, children }){
+    return(
+        <li>
+            <NavLink
+                to={to}
+                className={({isActive}) => isActive ? `${estilo.nav} ${estilo.ativo}` : estilo.nav}
+            >
+                {children}
+            </NavLink>
+        </li>
+    )
+}
+
 function SideBar(){
     return(
         <>
@@ -29,132 +42,105 @@ function SideBar(){
                     <div className={estilo.container_logo}>
                             <img src={imgLogo} className={estilo.imgLogo} />
                             <div className={estilo.texto_logo}>
-                                <strong>GOLPE DE MESTRE</strong>
-                                <small>Tempo de Avançar</small>
+                                <strong>Golpe de Mestre</strong>
+                                <small>Centro do projeto</small>
                             </div>
                     </div>
           
                     <ul className={estilo.menu}>
                         <h1>Gestão educacional</h1>
 
-                        <li> 
-                            <NavLink to="/" className={estilo.nav}>
+                        <ItemMenu to="/">
                                 <LuLayoutGrid size={18}/> Visão geral
-                            </NavLink> 
-                        </li>
+                            </ItemMenu>
 
-                        <li> 
-                            <NavLink to="/Dashboard/inscricoes" className={estilo.nav}>
+                        <ItemMenu to="/Dashboard/inscricoes">
                                 <LuFilePlus2 size={18}/> Inscrições e matrículas
-                            </NavLink> 
-                        </li>
+                            </ItemMenu>
 
-                        <li> 
-                            <NavLink to="/Dashboard/alunos" className={estilo.nav}>
+                        <ItemMenu to="/Dashboard/alunos">
                                 <LuUsersRound size={18}/> Alunos
-                            </NavLink> 
-                        </li>
+                            </ItemMenu>
 
-                        <li> 
-                            <NavLink to="/Dashboard/turmas" className={estilo.nav}>
+                        <ItemMenu to="/Dashboard/turmas">
                                 <LuLayers3 size={18}/> Turmas e horários
-                            </NavLink> 
-                        </li>
+                            </ItemMenu>
 
-                        <li> 
-                            <NavLink to="/Dashboard/diario" className={estilo.nav}>
+                        <ItemMenu to="/Dashboard/diario">
                                 <LuBookOpen size={18}/> Diário de aula
-                            </NavLink> 
-                        </li>
+                            </ItemMenu>
 
-                        <li> 
-                            <NavLink to="/Dashboard/presenca" className={estilo.nav}>
+                        <ItemMenu to="/Dashboard/presenca">
                                 <LuCheck size={18}/> Presença
-                            </NavLink> 
-                        </li>
+                            </ItemMenu>
 
-                        <li> 
-                            <NavLink to="/Dashboard/desenvolvimento" className={estilo.nav}>
+                        <ItemMenu to="/Dashboard/desenvolvimento">
                                 <LuPresentation size={18}/> Desenvolvimento
-                            </NavLink> 
-                        </li>
+                            </ItemMenu>
 
-                        <li> 
-                            <NavLink to="/Dashboard/atividades" className={estilo.nav}>
+                        <ItemMenu to="/Dashboard/atividades">
                                 <LuClipboardList size={18}/> Atividades
-                            </NavLink> 
-                        </li>
+                            </ItemMenu>
 
                       <h1>Relacionamento</h1>
 
-                        <li> 
-                            <NavLink to="/Dashboard/comunicados" className={estilo.nav}> 
+                        <ItemMenu to="/Dashboard/comunicados">
                                 <LuBell size={18} />
                                 Comunicados 
-                            </NavLink> 
-                        </li> 
+                            </ItemMenu> 
 
-                        <li> 
-                            <NavLink to="/Dashboard/solicitacoes" className={estilo.nav}> 
+                        <ItemMenu to="/Dashboard/solicitacoes">
                                 <LuMail size={18} />
                                 Solicitações 
-                            </NavLink> 
-                        </li> 
+                            </ItemMenu> 
 
-                        <li> 
-                            <NavLink to="/Dashboard/visitas" className={estilo.nav}> 
+                        <ItemMenu to="/Dashboard/visitas">
                                 <LuCalendarDays size={18} />
                                 Visitas ao projeto 
-                            </NavLink> 
-                        </li> 
+                            </ItemMenu> 
 
                         <h1>Institucional</h1> 
 
-                        <li> 
-                            <NavLink to="/Dashboard/relatorios" className={estilo.nav}> 
+                        <ItemMenu to="/Dashboard/relatorios">
                                 <LuChartNoAxesColumnIncreasing size={18} />
                                 Relatórios 
-                            </NavLink> 
-                        </li> 
+                            </ItemMenu> 
 
-                        <li> 
-                            <NavLink to="/Dashboard/doacoes" className={estilo.nav}> 
+                        <ItemMenu to="/Dashboard/doacoes">
                                 <LuHeart size={18} />
                                 Doações 
-                            </NavLink> 
-                        </li> 
+                            </ItemMenu> 
 
-                        <li> 
-                            <NavLink to="/Dashboard/financeiro" className={estilo.nav}> 
+                        <ItemMenu to="/Dashboard/financeiro">
                                 <LuWalletCards size={18} />
                                 Financeiro 
-                            </NavLink> 
-                        </li> 
+                            </ItemMenu> 
 
-                        <li> 
-                            <NavLink to="/Dashboard/apoiadores" className={estilo.nav}> 
+                        <ItemMenu to="/Dashboard/apoiadores">
                                 <LuShield size={18} />
                                 Apoiadores 
-                            </NavLink> 
-                        </li> 
+                            </ItemMenu> 
 
-                        <li> 
-                            <NavLink to="/Dashboard/equipe" className={estilo.nav}> 
+                        <ItemMenu to="/Dashboard/equipe">
                                 <LuUserRoundCheck size={18} />
                                 Equipe e acessos 
-                            </NavLink> 
-                        </li> 
+                            </ItemMenu> 
 
-                        <li> 
-                            <NavLink to="/Dashboard/configuracoes" className={estilo.nav}> 
+                        <ItemMenu to="/Dashboard/configuracoes">
                                 <LuSun size={18} />
                                 Configurações 
-                            </NavLink> 
-                        </li>
+                            </ItemMenu>
                     </ul>
-                  </div>
-          
-                </aside>
+              </div>
+
+              <div className={estilo.rodape_sidebar}>
+                    <span className={estilo.badge_perfil}>Administrador</span>
+                    <p>
+                        <strong>Mais que lutas.</strong>
+                        <span>Acompanhamos pessoas.</span>
+                    </p>
+              </div>
+          </aside>
         </>
     )
 }
