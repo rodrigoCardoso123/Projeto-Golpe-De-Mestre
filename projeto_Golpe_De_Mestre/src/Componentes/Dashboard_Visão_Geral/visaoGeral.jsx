@@ -21,6 +21,7 @@ import {
 } from "react-icons/lu";
 function VisaoGeral(){
     const hoje = new Date();
+
     const diasSemana = [
         "Dom",
         "Seg",
@@ -31,16 +32,6 @@ function VisaoGeral(){
         "Sáb"
     ];
 
-    const diasSemanaCompleto = [
-        "Domingo",
-        "Segunda",
-        "Terca",
-        "Quata",
-        "Quita",
-        "Sexta",
-        "Sábado"
-    ];
-
     const dias = Array.from({ length: 7 }, (_, index) => {
         const data = new Date(hoje);
         data.setDate(hoje.getDate() + index);
@@ -49,7 +40,6 @@ function VisaoGeral(){
             data,
             numero: data.getDate(),
             diaSemana: diasSemana[data.getDay()],
-            diaSemanaC: diasSemanaCompleto[data.getDay()],
             hoje: index === 0
         };
     });
@@ -59,11 +49,7 @@ function VisaoGeral(){
             <header className={estilo.header}>
                 <div className={estilo.titulo_header}>
                     <strong>Visão geral</strong>
-                    <p>{hoje.toLocaleDateString("pt-BR", {
-                            weekday: "long",
-                            day: "numeric",
-                            month: "long"
-                        })}</p>
+                    <p>domingo, 6 de setembro</p>
                 </div>
                 <div className={estilo.perfil_header}>
                     <LuBell size={22} className={estilo.icone_header}/>

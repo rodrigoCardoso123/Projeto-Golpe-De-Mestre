@@ -1,10 +1,14 @@
 import estilo from "./dashboard.module.css"
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import SideBar from "../../Componentes/SideBar/sidebar";
 import VisaoGeral from "../../Componentes/Dashboard_Visão_Geral/visaoGeral";
-import Inscricao_matricula from "../../Componentes/Dashboard_Inscrições_matricula/inscricao_matricula";
-import Nova_Inscricao from "../../Componentes/Dashboard_Nova_Inscrição/Nova_Inscricao";
-import Aluno from "../../Componentes/Dashboard_Alunos/aluno";
+import Inscricoes from "../../Componentes/Dashboard_Inscricoes/inscricoes";
+import NovaInscricao from "../../Componentes/Dashboard_Inscricoes/novaInscricao";
+import Alunos from "../../Componentes/Dashboard_Alunos/alunos";
+import NovoAluno from "../../Componentes/Dashboard_Alunos/novoAluno";
+import PerfilAluno from "../../Componentes/Dashboard_Alunos/perfilAluno";
+import EditarAluno from "../../Componentes/Dashboard_Alunos/editarAluno";
+import Turmas from "../../Componentes/Dashboard_Turmas/turmas";
 function Dashboard(){
     return(
         <>
@@ -14,9 +18,15 @@ function Dashboard(){
             <main className={estilo.dashboard}>
                 <Routes>
                     <Route path="/" element={<VisaoGeral/>} />
-                    <Route path="Inscricao_matricula" element={<Inscricao_matricula/>} />
-                    <Route path="Nova_Inscricao" element={<Nova_Inscricao/>} />
-                    <Route path="Aluno" element={<Aluno/>} />
+                    <Route path="inscricoes" element={<Inscricoes/>} />
+                    <Route path="inscricoes/nova" element={<NovaInscricao/>} />
+                    <Route path="alunos" element={<Alunos/>} />
+                    <Route path="alunos/novo" element={<NovoAluno/>} />
+                    <Route path="alunos/perfil/:id" element={<PerfilAluno/>} />
+                    <Route path="alunos/perfil/:id/editar" element={<EditarAluno/>} />
+                    <Route path="alunos/perfil" element={<Navigate to="/Dashboard/alunos" replace/>} />
+                    <Route path="alunos/perfil/editar" element={<Navigate to="/Dashboard/alunos" replace/>} />
+                    <Route path="turmas" element={<Turmas/>} />
                 </Routes>
             </main>
         </div>
