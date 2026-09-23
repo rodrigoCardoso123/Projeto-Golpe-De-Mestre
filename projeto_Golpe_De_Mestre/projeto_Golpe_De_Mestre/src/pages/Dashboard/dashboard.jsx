@@ -8,6 +8,7 @@ import Alunos from "../../Componentes/Dashboard_Alunos/alunos";
 import NovoAluno from "../../Componentes/Dashboard_Alunos/novoAluno";
 import PerfilAluno from "../../Componentes/Dashboard_Alunos/perfilAluno";
 import EditarAluno from "../../Componentes/Dashboard_Alunos/editarAluno";
+import Turmas from "../../Componentes/Dashboard_Turmas/turmas";
 function Dashboard(){
     return(
         <>
@@ -25,6 +26,7 @@ function Dashboard(){
                     <Route path="alunos/perfil/:id/editar" element={<EditarAluno/>} />
                     <Route path="alunos/perfil" element={<Navigate to="/Dashboard/alunos" replace/>} />
                     <Route path="alunos/perfil/editar" element={<Navigate to="/Dashboard/alunos" replace/>} />
+                    <Route path="turmas" element={<Turmas/>} />
                 </Routes>
             </main>
         </div>
