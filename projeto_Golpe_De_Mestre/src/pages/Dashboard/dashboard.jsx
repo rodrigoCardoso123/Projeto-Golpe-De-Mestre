@@ -9,6 +9,8 @@ import NovoAluno from "../../Componentes/Dashboard_Alunos/novoAluno";
 import PerfilAluno from "../../Componentes/Dashboard_Alunos/perfilAluno";
 import EditarAluno from "../../Componentes/Dashboard_Alunos/editarAluno";
 import Turmas from "../../Componentes/Dashboard_Turmas/turmas";
+import DiarioDeAula from "../../Componentes/Dashboard_Diário_De_Aula/Diario_de_aula";
+import Presenca from "../../Componentes/Dashboard_Presença/Presenca";
 function Dashboard(){
     return(
         <>
@@ -27,6 +29,8 @@ function Dashboard(){
                     <Route path="alunos/perfil" element={<Navigate to="/Dashboard/alunos" replace/>} />
                     <Route path="alunos/perfil/editar" element={<Navigate to="/Dashboard/alunos" replace/>} />
                     <Route path="turmas" element={<Turmas/>} />
+                    <Route path="diario" element={<DiarioDeAula/>} />
+                    <Route path="presenca" element={<Presenca/>} />
                 </Routes>
             </main>
         </div>
