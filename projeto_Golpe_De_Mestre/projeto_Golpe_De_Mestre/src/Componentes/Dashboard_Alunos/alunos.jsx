@@ -89,14 +89,20 @@ function Alunos(){
                                 {alunos.map((aluno) => (
                                     <tr key={aluno.id}>
                                         <td>
-                                            <div className={estilo.aluno}>
-                                                <div className={estilo.avatar}>{aluno.iniciais}</div>
+                                            <Link
+                                                to={`/Dashboard/alunos/perfil/${aluno.id}`}
+                                                className={estilo.link_aluno}
+                                                title={`Ver perfil de ${aluno.nome}`}
+                                            >
+                                                <div className={estilo.aluno}>
+                                                    <div className={estilo.avatar}>{aluno.iniciais}</div>
 
-                                                <div className={estilo.informacoes_aluno}>
-                                                    <strong>{aluno.nome}</strong>
-                                                    <span>{aluno.categoria}</span>
+                                                    <div className={estilo.informacoes_aluno}>
+                                                        <strong>{aluno.nome}</strong>
+                                                        <span>{aluno.categoria}</span>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </Link>
                                         </td>
 
                                         <td>{aluno.turma}</td>

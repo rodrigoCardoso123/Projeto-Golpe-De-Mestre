@@ -359,6 +359,32 @@
 
 
 
+/* Link (foto + nome) que abre o perfil do aluno */
+.link_aluno {
+    display: flex;
+    align-items: center;
+
+    color: inherit;
+    text-decoration: none;
+
+    border-radius: 6px;
+    outline: none;
+}
+
+.link_aluno:hover .informacoes_aluno strong {
+    color: #173F73;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.link_aluno:hover .avatar {
+    box-shadow: 0 0 0 3px rgba(23, 63, 115, 0.25);
+}
+
+.link_aluno:focus-visible {
+    box-shadow: 0 0 0 2px #173F73;
+}
+
 .aluno {
     display: flex;
     flex-direction: row;
