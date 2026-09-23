@@ -21,11 +21,12 @@ import {
   LuSun
 } from "react-icons/lu";
 
-function ItemMenu({ to, children }){
+function ItemMenu({ to, end, children }){
     return(
         <li>
             <NavLink
                 to={to}
+                end={end}
                 className={({isActive}) => isActive ? `${estilo.nav} ${estilo.ativo}` : estilo.nav}
             >
                 {children}
@@ -50,7 +51,7 @@ function SideBar(){
                     <ul className={estilo.menu}>
                         <h1>Gestão educacional</h1>
 
-                        <ItemMenu to="/">
+                        <ItemMenu to="/Dashboard" end>
                                 <LuLayoutGrid size={18}/> Visão geral
                             </ItemMenu>
 
