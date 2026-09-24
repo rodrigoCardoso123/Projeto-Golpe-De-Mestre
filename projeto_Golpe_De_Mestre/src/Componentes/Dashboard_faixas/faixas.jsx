@@ -1,18 +1,18 @@
-import estilo from "./Presenca.module.css"
+import estilo from "./faixas.module.css"
 import {
     LuBell
 } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import alunos from "../Dashboard_Alunos/dadosAlunos";
 
-function Presenca() {
+function Faixas() {
     const Hoje = new Date();
     return (
         <>
             <main className={estilo.container}>
                 <header className={estilo.header}>
                     <div className={estilo.titulo_header}>
-                        <strong>Presença</strong>
+                        <strong>Faixas</strong>
                         <p>{Hoje.toLocaleDateString("pt-br", {
                             weekday: "long",
                             day: "numeric",
@@ -35,31 +35,15 @@ function Presenca() {
                     <div className={estilo.container_titulo_main}>
                         <div>
                             <strong>Área da equipe</strong>
-                            <h1>Presença</h1>
-                            <p>Registre a participação e mantenha o acompanhament</p>
+                            <h1>Acompanhamento de faixas</h1>
+                            <p>Observe o percurso e planeje avaliações individuai</p>
                         </div>
                     </div>
 
                     <div className={estilo.container_form}>
                         <div>
-                            <label>Mês</label>
-                            <input type="date" name="" id="" />
-                        </div>
-
-                        <div>
-                            <label>Turma</label>
-                            <select name="">
-                                <option value="">Todos</option>
-                                <option value="">...</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label>Professor</label>
-                            <select name="">
-                                <option value="">Todos</option>
-                                <option value="">...</option>
-                            </select>
+                            <label>Buscar aluno</label>
+                            <input type="text" name="" id="" />
                         </div>
 
                         <div>
@@ -69,6 +53,43 @@ function Presenca() {
                                 <option value="">...</option>
                             </select>
                         </div>
+
+                        <div>
+                            <label>Faixa</label>
+                            <select name="">
+                                <option value="">Todos</option>
+                                <option value="">...</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Situação</label>
+                            <select name="">
+                                <option value="">Todos</option>
+                                <option value="">...</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Faixa etária</label>
+                            <select name="">
+                                <option value="">Todos</option>
+                                <option value="">...</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Próxima avaliação</label>
+                            <select name="">
+                                <option value="">Todos</option>
+                                <option value="">...</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Presença máxima (%)</label>
+                            <input type="text" name="" id="" />
+                        </div>
                     </div>
 
                     <div className={estilo.container_tabela}>
@@ -77,9 +98,10 @@ function Presenca() {
                             <thead>
                                 <tr>
                                     <th>ALUNO</th>
-                                    <th>FAIXA</th>
+                                    <th>FAIXA E GRAUS</th>
                                     <th>PRESENÇA</th>
-                                    <th>OBSERVAÇÃO</th>
+                                    <th>PRÓXIMA AVALIAÇÃO</th>
+                                    <th></th>
                                 </tr>
                             </thead>
 
@@ -87,7 +109,7 @@ function Presenca() {
                                 {alunos.map((aluno) => (
                                     <tr key={aluno.id}>
 
-
+                                        
                                         <td>
                                             <Link
                                                 to={`/Dashboard/alunos/perfil/${aluno.id}`}
@@ -95,6 +117,7 @@ function Presenca() {
                                                 title={`Ver perfil de ${aluno.nome}`}
                                             >
                                                 <div className={estilo.aluno}>
+
                                                     <div className={estilo.avatar}>
                                                         {aluno.iniciais}
                                                     </div>
@@ -103,13 +126,16 @@ function Presenca() {
                                                         <strong>{aluno.nome}</strong>
                                                         <span>{aluno.categoria}</span>
                                                     </div>
+
                                                 </div>
                                             </Link>
                                         </td>
 
 
+                                        
                                         <td>
                                             <div className={estilo.faixa}>
+
                                                 <img
                                                     src={aluno.faixa.imagem}
                                                     alt={`Faixa ${aluno.faixa.nome.toLowerCase()}`}
@@ -124,50 +150,48 @@ function Presenca() {
                                                             : "graus"}
                                                     </small>
                                                 </span>
-                                            </div>
-                                        </td>
-
-
-                                        <td>
-                                            <div className={estilo.opcoes_presenca}>
-
-                                                <label className={estilo.opcao_presenca}>
-                                                    <input
-                                                        type="radio"
-                                                        name={`presenca-${aluno.id}`}
-                                                        value="presente"
-                                                    />
-                                                    <span>Presente</span>
-                                                </label>
-
-                                                <label className={estilo.opcao_presenca}>
-                                                    <input
-                                                        type="radio"
-                                                        name={`presenca-${aluno.id}`}
-                                                        value="ausente"
-                                                    />
-                                                    <span>Ausente</span>
-                                                </label>
-
-                                                <label className={estilo.opcao_presenca}>
-                                                    <input
-                                                        type="radio"
-                                                        name={`presenca-${aluno.id}`}
-                                                        value="justificado"
-                                                    />
-                                                    <span>Justificado</span>
-                                                </label>
 
                                             </div>
                                         </td>
 
 
+                                        
                                         <td>
-                                            <input
-                                                type="text"
-                                                className={estilo.observacao}
-                                                placeholder=""
-                                            />
+                                            <div className={estilo.presenca}>
+
+                                                <div className={estilo.barra_presenca}>
+                                                    <div
+                                                        className={estilo.progresso_presenca}
+                                                        style={{
+                                                            width: `${aluno.presenca || 88}%`
+                                                        }}
+                                                    ></div>
+                                                </div>
+
+                                                <span>
+                                                    {aluno.presenca || 88}%
+                                                </span>
+
+                                            </div>
+                                        </td>
+
+
+                                        
+                                        <td>
+                                            <span className={estilo.proxima_avaliacao}>
+                                                {aluno.proximaAvaliacao || "—"}
+                                            </span>
+                                        </td>
+
+
+                                       
+                                        <td>
+                                            <button
+                                                type="button"
+                                                className={estilo.botao_avaliar}
+                                            >
+                                                Avaliar
+                                            </button>
                                         </td>
 
                                     </tr>
@@ -176,24 +200,9 @@ function Presenca() {
 
                         </table>
                     </div>
-                    <div className={estilo.container_footer}>
-                        <p>Marque a presença dos alunos.</p>
-
-                        <div className={estilo.container_botoes}>
-                            <button className={estilo.botao_todos}>
-
-                                <span>Todos presentes</span>
-                            </button>
-
-                            <button className={estilo.botao_salvar}>
-
-                                <span>Salvar presença</span>
-                            </button>
-                        </div>
-                    </div>
                 </section>
             </main>
         </>
     )
 }
-export default Presenca;
+export default Faixas;

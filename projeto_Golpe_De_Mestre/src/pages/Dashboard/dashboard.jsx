@@ -11,6 +11,7 @@ import EditarAluno from "../../Componentes/Dashboard_Alunos/editarAluno";
 import Turmas from "../../Componentes/Dashboard_Turmas/turmas";
 import DiarioDeAula from "../../Componentes/Dashboard_Diário_De_Aula/Diario_de_aula";
 import Presenca from "../../Componentes/Dashboard_Presença/Presenca";
+import Faixas from "../../Componentes/Dashboard_faixas/faixas";
 function Dashboard(){
     return(
         <>
@@ -31,6 +32,7 @@ function Dashboard(){
                     <Route path="turmas" element={<Turmas/>} />
                     <Route path="diario" element={<DiarioDeAula/>} />
                     <Route path="presenca" element={<Presenca/>} />
+                    <Route path="desenvolvimento" element={<Faixas/>} />
                 </Routes>
             </main>
         </div>
