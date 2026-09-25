@@ -52,7 +52,7 @@
 .container_links a{
     text-decoration: none;
     color: #F4F7F9;
-    font-family: var(--fonte-corpo);
+    font-family: font-body;
     font-weight: 600;
     font-style: SemiBold;
     font-size: 15px;
@@ -71,7 +71,7 @@
     border-radius: 6px;
     background-color: #B4392C;
     opacity: 1;
-    font-family: var(--fonte-corpo);
+    font-family: font-body;
     font-weight: 800;
     font-style: ExtraBold;
     font-size: 15px;

@@ -1,5 +1,5 @@
 :root{
-  /* Fontes do projeto */
+  /* Fontes usadas apenas nas páginas do Dashboard */
   --fonte-display: 'Anton', 'Arial Narrow', sans-serif;
   --fonte-corpo: 'Manrope', '-apple-system', sans-serif;
 }
@@ -8,8 +8,4 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body{
-  font-family: var(--fonte-corpo);
 }
