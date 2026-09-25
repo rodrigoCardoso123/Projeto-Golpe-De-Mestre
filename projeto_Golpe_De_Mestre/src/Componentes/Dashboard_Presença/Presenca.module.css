@@ -586,7 +586,7 @@
 
     color: #FFFFFF;
 
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
     font-style: normal;
     font-weight: 400;
 
@@ -629,7 +629,7 @@
 
     border-radius: 5px;
 
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--fonte-corpo);
     font-style: normal;
     font-weight: 700;
 

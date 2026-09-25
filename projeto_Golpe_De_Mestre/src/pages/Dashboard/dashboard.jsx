@@ -12,6 +12,11 @@ import Turmas from "../../Componentes/Dashboard_Turmas/turmas";
 import DiarioDeAula from "../../Componentes/Dashboard_Diário_De_Aula/Diario_de_aula";
 import Presenca from "../../Componentes/Dashboard_Presença/Presenca";
 import Faixas from "../../Componentes/Dashboard_faixas/faixas";
+import Atividades from "../../Componentes/Dashboard_Atividades/atividades";
+import Comunicados from "../../Componentes/Dashboard_Comunicados/comunicados";
+import Solicitacoes from "../../Componentes/Dashboard_Solicitações/solicitacoes";
+import Visitas from "../../Componentes/Dashboard_Visitas/visitas";
+import Relatorios from "../../Componentes/Dashboard_Relatorios/relatorios";
 function Dashboard(){
     return(
         <>
@@ -33,6 +38,11 @@ function Dashboard(){
                     <Route path="diario" element={<DiarioDeAula/>} />
                     <Route path="presenca" element={<Presenca/>} />
                     <Route path="desenvolvimento" element={<Faixas/>} />
+                    <Route path="atividades" element={<Atividades/>} />
+                    <Route path="comunicados" element={<Comunicados/>} />
+                    <Route path="solicitacoes" element={<Solicitacoes/>} />
+                    <Route path="relatorios" element={<Relatorios/>} />
+                    <Route path="visitas" element={<Visitas/>} />
                 </Routes>
             </main>
         </div>
