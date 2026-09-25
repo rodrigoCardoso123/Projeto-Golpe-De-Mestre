@@ -34,7 +34,7 @@ function Comunicados() {
             .toLowerCase()
             .includes(busca.trim().toLowerCase());
 
-        const publicados = comunicados.length > 0;
+        const publicados = comunicado.length > 0;
         const correspondeSituacao =
             situacao === "todas" ||
             (situacao === "Publicado" && publicados);

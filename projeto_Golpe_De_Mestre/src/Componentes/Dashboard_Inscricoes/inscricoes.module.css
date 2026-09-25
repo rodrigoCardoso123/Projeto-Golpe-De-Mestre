@@ -364,26 +364,36 @@
 .badge_nova {
     background-color: #E4E8EE;
     color: #1C1F24;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .badge_analise {
     background-color: #FBF3DA;
     color: #8A6A00;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .badge_espera {
     background-color: #DCE8FF;
     color: #173F73;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .badge_aprovada {
     background-color: #DFF5E9;
     color: #1F7A45;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .badge_matriculada {
     background-color: #173F73;
     color: #FFFFFF;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .coluna_acao {

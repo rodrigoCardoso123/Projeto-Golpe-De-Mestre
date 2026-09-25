@@ -17,6 +17,8 @@ import Comunicados from "../../Componentes/Dashboard_Comunicados/comunicados";
 import Solicitacoes from "../../Componentes/Dashboard_Solicitações/solicitacoes";
 import Visitas from "../../Componentes/Dashboard_Visitas/visitas";
 import Relatorios from "../../Componentes/Dashboard_Relatorios/relatorios";
+import Doacoes from "../../Componentes/Dashboard_Doações/Doacoes";
+import Financeiro from "../../Componentes/Dashboard_Financeiro/Financeiro";
 function Dashboard(){
     return(
         <>
@@ -43,6 +45,8 @@ function Dashboard(){
                     <Route path="solicitacoes" element={<Solicitacoes/>} />
                     <Route path="relatorios" element={<Relatorios/>} />
                     <Route path="visitas" element={<Visitas/>} />
+                    <Route path="doacoes" element={<Doacoes/>} />
+                    <Route path="financeiro" element={<Financeiro/>} />
                 </Routes>
             </main>
         </div>
