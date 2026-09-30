@@ -1,9 +1,58 @@
 import estilo from "./home.module.css"
 import imgLogo from "../../assets/imgLogo.PNG"
 import barra from "../../assets/codigo_de_barra_projeto.png"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 function Home(){ 
     const navigate = useNavigate()
+    const [doacaoSelecionada, setDoacaoSelecionada] = useState(50)
+    const [formEnviado, setFormEnviado] = useState(false)
+
+    const irPara = (id) => {
+        document.getElementById(id)?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        })
+    }
+
+    const copiarPix = async () => {
+        try {
+            await navigator.clipboard.writeText("doacoes@tempodeavancar.org.br")
+            alert("Chave PIX copiada!")
+        } catch {
+            alert("Não foi possível copiar automaticamente. Chave PIX: doacoes@tempodeavancar.org.br")
+        }
+    }
+
+    const enviarFormulario = (event) => {
+        event.preventDefault()
+        setFormEnviado(true)
+    }
+
+    useEffect(() => {
+    const elementos = document.querySelectorAll("[data-reveal]")
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(estilo.reveal_visivel)
+                    entry.target.classList.add(estilo.animacao_visivel)
+
+                    // força todos os filhos com entrada_canto a aparecer
+                    entry.target.querySelectorAll(`.${estilo.entrada_canto},.${estilo.objeto_canto}`).forEach(el => {
+                        el.classList.add(estilo.animacao_visivel)
+                    })
+                }
+            })
+        },
+        { threshold: 0.12 }
+    )
+
+    elementos.forEach((elemento) => observer.observe(elemento))
+    return () => observer.disconnect()
+}, [])
+
     return( 
     <> 
         <main className={estilo.container}> 
@@ -16,14 +65,18 @@ function Home(){
                     <p className={estilo.p_banner}> PROJETO SOCIAL DE JIU-JITSU E EDUCAÇÃO </p> 
                     <h1 className={estilo.h1_banner}> É TEMPO DE AVANÇAR </h1> 
                     <p className={estilo.p_banner2}> Ensinamos jiu-jitsu e damos reforço escolar para crianças e adolescentes que precisam de um caminho. Disciplina no tatame, apoio na sala de aula — um golpe de mestre na vida de cada aluno. </p> 
+                        <div className={estilo.container_butoes_banner}>
+                            <button type="button" className={estilo.button_azul_banner} onClick={() => irPara("visitar")}>Agendar visita ao CT</button>
+                            <button type="button" className={estilo.button_branco_banner} onClick={() => irPara("doar")}>Quero apoiar a ONG</button>
+                        </div> 
                 </div> 
             </section>
 
-            <section className={estilo.section_historia}>
+            <section id="ong" data-reveal className={`${estilo.section_historia} ${estilo.reveal}`}>
                 <div className={estilo.container_historia}>
-                    <div className={estilo.container_img}>
+                    <div className={`${estilo.container_img} ${estilo.objeto_canto} ${estilo.objeto_esquerda} ${estilo.entrada_canto} ${estilo.entrada_esquerda}`}>
                         <img src={imgLogo} alt="imagem_da_logo" className={estilo.imglogo} />
-                        <div className={estilo.card_img_historia}>
+                        <div className={`${estilo.card_img_historia} ${estilo.objeto_canto} ${estilo.objeto_direita} ${estilo.entrada_canto} ${estilo.entrada_direita}`}>
                             <strong>+12</strong>
                             <p>ANOS FORMANDO CAMPEÕES DENTRO E FORA DO TATAME</p>
                         </div>
@@ -43,27 +96,27 @@ function Home(){
                 </div>
             </section>
 
-            <section className={estilo.section_jornada}>
+            <section id="jornada" data-reveal className={`${estilo.section_jornada} ${estilo.reveal}`}>
                 <div className={estilo.container_jornada}>
                     <p className={estilo.p_jornada}>NOSSA JORNADA ATÉ AQUI</p>
                     <h1 className={estilo.h1_jornada}>Cada número aqui é um degrau — como uma graduação no tatame</h1>
                     <div className={estilo.container_jornada_numero}>
-                        <div className={estilo.card_jornada}>
+                        <div className={`${estilo.card_jornada} ${estilo.card_animada} ${estilo.objeto_canto} ${estilo.entrada_canto} ${estilo.entrada_baixo} ${estilo.entrada_delay_4} ${estilo.entrada_canto} ${estilo.entrada_baixo} ${estilo.entrada_delay_3} ${estilo.entrada_canto} ${estilo.entrada_baixo} ${estilo.entrada_delay_2} ${estilo.entrada_canto} ${estilo.entrada_baixo} ${estilo.entrada_delay_1}`}>
                             <div className={estilo.ponto}></div>
                             <h1>180+</h1>
                             <p>ALUNOS ATIVOS</p>
                         </div>
-                        <div className={estilo.card_jornada}>
+                        <div className={`${estilo.card_jornada} ${estilo.card_animada} ${estilo.objeto_canto}`}>
                             <div className={estilo.ponto_laranja}></div>
                             <h1>24</h1>
                             <p>FAIXAS FORMADAS EM 2026</p>
                         </div>
-                        <div className={estilo.card_jornada}>
+                        <div className={`${estilo.card_jornada} ${estilo.card_animada} ${estilo.objeto_canto}`}>
                             <div className={estilo.ponto_azul}></div>
                             <h1>6</h1>
                             <p>PROFESSORES E EDUCADORES</p>
                         </div>
-                        <div className={estilo.card_jornada}>
+                        <div className={`${estilo.card_jornada} ${estilo.card_animada} ${estilo.objeto_canto}`}>
                             <div className={estilo.ponto_vermelho}></div>
                             <h1>12</h1>
                             <p>ANOS DE HISTÓRIA</p>
@@ -73,14 +126,14 @@ function Home(){
                 </div>
             </section>
 
-            <section className={estilo.section_aulas}>
+            <section id="aulas" data-reveal className={`${estilo.section_aulas} ${estilo.reveal}`}>
                 <div className={estilo.conteudo_aulas}>
                     <p className={estilo.p_aulas}>O QUE ENSINAMOS</p>
                     <h1 className={estilo.h1_aulas}>Duas aulas, um único propósito</h1>
                     <p className={estilo.p2_aulas}>Cada aluno da Tempo de Avançar participa das duas frentes do projeto — porque disciplina no tatame só faz sentido se caminhar junto com a educação.</p>
 
                     <div className={estilo.container_aulas_informacao}>
-                        <div className={estilo.card_aulas}>
+                        <div className={`${estilo.card_aulas} ${estilo.card_animada}`}>
                             <h1>Jiu-Jitsu</h1>
                             <p className={estilo.p2_aulas}>Turmas divididas por idade e faixa, com graduação acompanhada e participação em competições regionais. Ensinamos a arte suave como ferramenta de disciplina, respeito e autoconfiança.</p>
 
@@ -91,7 +144,7 @@ function Home(){
                             </div>
                         </div>
 
-                        <div className={estilo.card_aulas}>
+                        <div className={`${estilo.card_aulas} ${estilo.card_animada}`}>
                             <h1>Reforço escolar</h1>
                             <p className={estilo.p2_aulas}>Apoio em português e matemática, acompanhamento de boletim e rotina de estudos, feito por educadores voluntários. Frequência nas aulas é pré-requisito para continuar no jiu-jitsu.</p>
 
@@ -105,8 +158,8 @@ function Home(){
                 </div>
             </section>
 
-            <section className={estilo.section_agendamento}>
-                    <div className={estilo.container_principal_agendamento}>
+            <section id="visitar" data-reveal className={`${estilo.section_agendamento} ${estilo.reveal}`}>
+                    <div className={`${estilo.container_principal_agendamento} ${estilo.objeto_canto} ${estilo.objeto_esquerda} ${estilo.entrada_canto} ${estilo.entrada_esquerda}`}>
                         <div className={estilo.container_conteudo_agendamento}>
                             <p className={estilo.p_agendamento}>CONHEÇA DE PERTO</p>
                             <h1>Agende uma visita ao nosso CT</h1>
@@ -120,7 +173,7 @@ function Home(){
 
                         </div>
                         <div className={estilo.container_conteudo_agendamento}>
-                            <form action="">
+                            <form onSubmit={enviarFormulario}>
                                 <div className={estilo.linha}>
                                     <div>
                                         <label htmlFor="nome">NOME COMPLETO</label>
@@ -162,34 +215,48 @@ function Home(){
                             <textarea name="mensagem" id="mensagem"></textarea>
                         </div>
 
-                        <button type="submit">
-                            Solicitar visita
+                        <button type="submit" className={estilo.button_formulario}>
+                            {formEnviado ? "Solicitação enviada ✓" : "Solicitar visita"}
                         </button>
+                        {formEnviado && (
+                            <p className={estilo.mensagem_sucesso}>
+                                Recebemos sua solicitação. Nossa equipe entrará em contato.
+                            </p>
+                        )}
 
                             </form>
                         </div>
                     </div>
             </section>
 
-            <section className={estilo.section_doacao}>
+            <section id="doar" data-reveal className={`${estilo.section_doacao} ${estilo.reveal}`}>
                     <div className={estilo.container_doacao}>
-                        <div className={estilo.container_codigoDeBarra}>
+                        <div className={`${estilo.container_codigoDeBarra} ${estilo.objeto_canto} ${estilo.objeto_direita} ${estilo.entrada_canto} ${estilo.entrada_direita}`}>
                             <strong>DOAÇÃO VIA PIX</strong>
                             <div className={estilo.fundo_codigoDeBarra}>
                                 <img src={barra} alt="" className={estilo.barraImg} />
                             </div>
                             <div className={estilo.container_butoes}>
-                                <button>R$ 20</button>
-                                <button>R$ 50</button>
-                                <button>R$ 100</button>
-                                <button>R$ 200</button>
+                                {[20, 50, 100, 200].map((valor) => (
+                                    <button
+                                        key={valor}
+                                        type="button"
+                                        className={doacaoSelecionada === valor ? estilo.botao_doacao_ativo : ""}
+                                        onClick={() => setDoacaoSelecionada(valor)}
+                                    >
+                                        R$ {valor}
+                                    </button>
+                                ))}
                             </div>
+                            <p className={estilo.valor_doacao}>
+                                Valor selecionado: <strong>R$ {doacaoSelecionada}</strong>
+                            </p>
                             <div className={estilo.container_copiar_pix}>
                                 <p>doacoes@tempodeavancar.org.br</p>
-                                <button>COPIAR</button>
+                                <button type="button" onClick={copiarPix}>COPIAR</button>
                             </div>
                         </div>
-                        <div className={estilo.conteudo_doacao}>
+                        <div className={`${estilo.conteudo_doacao} ${estilo.objeto_canto} ${estilo.objeto_esquerda} ${estilo.entrada_canto} ${estilo.entrada_esquerda}`}>
                             <strong>SUA AJUDA VIRA TATAME, QUIMONO E MERENDA</strong>
                             <h1>Um Pix pode mudar o rumo de uma criança</h1>
                             <p>Somos uma ONG e vivemos das doações da nossa comunidade. Cada real ajuda a manter quimonos, material escolar, transporte para competições e a estrutura do nosso Centro de Treinamento.</p>
@@ -206,45 +273,43 @@ function Home(){
                                 </li>
                             </ul>
 
-                            <button>Quero ser um apoiador fixo</button>
+                            <button type="button" onClick={() => irPara("doar")}>
+                                Quero ser um apoiador fixo
+                            </button>
                         </div>
                     </div>
             </section>
 
-            <section className={estilo.section_apoiadores}>
+            <section id="apoiadores" data-reveal className={`${estilo.section_apoiadores} ${estilo.reveal}`}>
                     <div className={estilo.conteudo_apoiadores}>
                         <strong>QUEM ACREDITA NESSA CAUSA</strong>
                         <h1>Nossos apoiadores</h1>
                         <p>Empresas e pessoas que sustentam o projeto todos os meses. Sua marca pode estar aqui também.</p>
-                        <div className={estilo.card_apoiadores}>
-                            <div>
-                                <p>Instituto Avançar</p>
-                            </div>
+                        <div className={estilo.apoiadores_carrossel}>
+                            <div className={estilo.trilho_apoiadores}>
+                                <div className={estilo.grupo_apoiadores}>
+                                    <div className={estilo.item_apoiador}><p>Instituto Avançar</p></div>
+                                    <div className={estilo.item_apoiador}><p>Grupo Mestre</p></div>
+                                    <div className={estilo.item_apoiador}><p>Konbat Sports</p></div>
+                                    <div className={estilo.item_apoiador}><p>Farmácia Vida</p></div>
+                                    <div className={estilo.item_apoiador}><p>Construtora Alicerce</p></div>
+                                    <div className={estilo.item_apoiador}><p>Studio 220</p></div>
+                                </div>
 
-                            <div>
-                                <p>Grupo Mestre</p>
-                            </div>
-
-                            <div>
-                                <p>Konbat Sports</p>
-                            </div>
-
-                            <div>
-                                <p>Farmácia Vida</p>
-                            </div>
-
-                            <div>
-                                <p>Construtora Alicerce</p>
-                            </div>
-
-                            <div>
-                                <p>Studio 220</p>
+                                <div className={estilo.grupo_apoiadores} aria-hidden="true">
+                                    <div className={estilo.item_apoiador}><p>Instituto Avançar</p></div>
+                                    <div className={estilo.item_apoiador}><p>Grupo Mestre</p></div>
+                                    <div className={estilo.item_apoiador}><p>Konbat Sports</p></div>
+                                    <div className={estilo.item_apoiador}><p>Farmácia Vida</p></div>
+                                    <div className={estilo.item_apoiador}><p>Construtora Alicerce</p></div>
+                                    <div className={estilo.item_apoiador}><p>Studio 220</p></div>
+                                </div>
                             </div>
                         </div>
                     </div>
             </section>
 
-            <section className={estilo.section_professores}>
+            <section id="professores" data-reveal className={`${estilo.section_professores} ${estilo.reveal}`}>
                 <div className={estilo.conteudo_professores}>
                     <div>
                         <h1>Área restrita — professores e administração</h1>
@@ -283,10 +348,10 @@ function Home(){
                     <div className={estilo.footer_navegacao}>
                         <h3>NAVEGAÇÃO</h3>
 
-                        <a href="#">A ONG</a>
-                        <a href="#">Aulas</a>
-                        <a href="#">Visitar o CT</a>
-                        <a href="#">Doar</a>
+                        <a href="#ong" onClick={(event) => { event.preventDefault(); irPara("ong") }}>A ONG</a>
+                        <a href="#aulas" onClick={(event) => { event.preventDefault(); irPara("aulas") }}>Aulas</a>
+                        <a href="#visitar" onClick={(event) => { event.preventDefault(); irPara("visitar") }}>Visitar o CT</a>
+                        <a href="#doar" onClick={(event) => { event.preventDefault(); irPara("doar") }}>Doar</a>
                     </div>
 
 

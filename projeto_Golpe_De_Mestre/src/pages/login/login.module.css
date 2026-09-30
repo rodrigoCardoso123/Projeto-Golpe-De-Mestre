@@ -2,6 +2,7 @@
     min-height: 100vh;
     width: 100%;
     display: flex;
+    background-color: #FFFFFF;
 }
 
 /* CSS Da Parte do banner */
@@ -192,6 +193,8 @@
 }
 .container_login form{
     width: 100%;
+    display: flex;
+    flex-direction: column;
     min-height: 306px;
     opacity: 1;
     padding-top: 20px;
@@ -229,7 +232,7 @@
 }
 .container_login button{
     margin-top: 15px;
-    width: 430;
+    width: 100%;
     min-height: 44px;
     opacity: 1;
     gap: 10px;
