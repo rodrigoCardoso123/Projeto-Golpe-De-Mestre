@@ -415,7 +415,78 @@
 
         gap: 20px;
     }
+    .header {
+        width: 100%;
+        min-height: 64px;
+        box-sizing: border-box;
+        padding: 10px 16px;
+        align-items: center;
+    }
 
+    .titulo_header {
+        width: auto;
+        height: auto;
+    }
+
+    .titulo_header strong {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .titulo_header p {
+        font-size: 11px;
+        line-height: 15px;
+        margin: 2px 0 0;
+    }
+
+    .perfil_header {
+        width: auto;
+        height: 40px;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .icone_header {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .conteudo_perfil {
+        width: auto;
+        height: 40px;
+        min-height: 40px;
+        gap: 7px;
+        align-items: center;
+    }
+
+    .conteudo_perfil p {
+        width: 36px;
+        height: 36px;
+        padding: 9px;
+        box-sizing: border-box;
+        margin: 0;
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .conteudo_perfil div {
+        width: auto;
+        max-width: 100px;
+        height: auto;
+        padding-top: 0;
+    }
+
+    .conteudo_perfil strong {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .conteudo_perfil small {
+        font-size: 9px;
+        line-height: 12px;
+    }
     .container_titulo_main h1 {
         font-size: 36px;
         line-height: 42px;
@@ -477,5 +548,65 @@
     .container_form input,
     .container_form select {
         width: 100%;
+    }
+}
+/* Responsividade para tablet */
+
+@media (min-width: 769px) and (max-width: 1050px) {
+
+    .container {
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    .header {
+        min-height: 78px;
+        padding: 14px 28px;
+    }
+
+    .section_main {
+        width: 100%;
+        height: auto;
+        min-height: calc(100vh - 78px);
+        padding: 30px 28px 60px;
+    }
+
+    .container_titulo_main {
+        width: 100%;
+        height: auto;
+        min-height: 90px;
+    }
+
+    .container_titulo_main h1 {
+        font-size: 36px;
+        line-height: 42px;
+    }
+
+    .container_filtros {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .container_filtros > div {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .container_filtros input,
+    .container_filtros select {
+        width: 100%;
+    }
+
+    .tabela_container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabela {
+        min-width: 850px;
     }
 }

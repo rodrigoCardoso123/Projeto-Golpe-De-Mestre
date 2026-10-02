@@ -1,5 +1,5 @@
 import estilo from "./login.module.css"
-import imgLogo from "../../assets/imgLogo.png"
+import ImgLogo from "../../assets/imgLogo.png"
 import imgBanner from '../../assets/imgBanner.png'
 import { useNavigate } from "react-router-dom"
 function Login(){
@@ -11,7 +11,7 @@ function Login(){
             <main className={estilo.mainContainer}>
                 <div className={estilo.banner}>
                     <div className={estilo.container_logo}>
-                        <img src={imgLogo} className={estilo.imgLogo} />
+                        <img src={ImgLogo} className={estilo.imgLogo} />
                             <div className={estilo.texto_logo}>
                                 <strong>GOLPE DE MESTRE</strong>
                                 <small>Tempo de Avançar</small>

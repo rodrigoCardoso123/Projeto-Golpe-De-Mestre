@@ -244,3 +244,138 @@
     font-weight: 600;
     border-radius: 5px;
 }
+
+@media (max-width: 768px){
+
+    .mainContainer{
+        flex-direction: column;
+    }
+
+    /* Banner */
+    .banner{
+        width: 100%;
+        min-height: auto;
+        padding: 25px 20px;
+    }
+
+    .container_logo{
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .imgLogo{
+        width: 55px;
+        height: 50px;
+    }
+
+    .texto_logo{
+        align-items: flex-start;
+        gap: 2px;
+        padding-top: 0;
+    }
+
+    .texto_logo strong{
+        font-size: 14px;
+    }
+
+    .texto_logo small{
+        font-size: 11px;
+    }
+
+    .conteudo_banner{
+        padding-top: 40px;
+        height: auto;
+        gap: 18px;
+    }
+
+    .conteudo_banner strong{
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .conteudo_banner h1{
+        font-size: 36px;
+        line-height: 40px;
+        letter-spacing: -1px;
+    }
+
+    .conteudo_banner h1 span{
+        font-size: 36px;
+    }
+
+    .conteudo_banner p{
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    /* Imagem */
+    .container_imgbanner{
+        width: 100%;
+        height: auto;
+        padding: 25px 0;
+    }
+
+    .container_imgbanner img{
+        width: 100%;
+        height: auto;
+        max-width: 350px;
+    }
+
+    .banner a{
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    /* Login */
+    .section_login{
+        width: 100%;
+        min-height: auto;
+        padding: 35px 20px;
+    }
+
+    .container_login{
+        min-height: auto;
+        gap: 12px;
+    }
+
+    .container_login h1{
+        font-size: 13px;
+    }
+
+    .container_login h2{
+        font-size: 32px;
+        line-height: 36px;
+    }
+
+    .container_login p{
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .container_login form{
+        padding-top: 15px;
+    }
+
+    .container_login input{
+        height: 48px;
+        padding: 0 12px;
+        border-radius: 8px;
+    }
+
+    .container_login button{
+        height: 50px;
+        border-radius: 8px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1050px){
+    .banner{
+        justify-content: center;
+        min-height: auto;
+        padding: 25px 20px;
+    }
+    .container_imgbanner img{
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+    }
+}

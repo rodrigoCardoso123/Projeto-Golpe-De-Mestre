@@ -30,7 +30,7 @@ function Equipe_e_Acesso(){
           <main className={estilo.container}>
                 <header className={estilo.header}>
                     <div className={estilo.titulo_header}>
-                        <strong>Apoiadores</strong>
+                        <strong>Equipe e Acesso</strong>
                         <p>{dataHoje}</p>
                     </div>
                     <div className={estilo.perfil_header}>

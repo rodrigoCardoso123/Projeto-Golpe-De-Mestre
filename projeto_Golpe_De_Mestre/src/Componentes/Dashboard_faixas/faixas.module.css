@@ -620,3 +620,383 @@
 
 }
 
+/* Responsividade para celular */
+
+@media (max-width: 768px) {
+
+    .container {
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    .header {
+        width: 100%;
+        min-height: 64px;
+        box-sizing: border-box;
+        padding: 10px 16px;
+        align-items: center;
+    }
+
+    .titulo_header {
+        width: auto;
+        height: auto;
+    }
+
+    .titulo_header strong {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .titulo_header p {
+        font-size: 11px;
+        line-height: 15px;
+        margin: 2px 0 0;
+    }
+
+    .perfil_header {
+        width: auto;
+        height: 40px;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .icone_header {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .conteudo_perfil {
+        width: auto;
+        height: 40px;
+        min-height: 40px;
+        gap: 7px;
+        align-items: center;
+    }
+
+    .conteudo_perfil p {
+        width: 36px;
+        height: 36px;
+        padding: 9px;
+        box-sizing: border-box;
+        margin: 0;
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .conteudo_perfil div {
+        width: auto;
+        max-width: 100px;
+        height: auto;
+        padding-top: 0;
+    }
+
+    .conteudo_perfil strong {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .conteudo_perfil small {
+        font-size: 9px;
+        line-height: 12px;
+    }
+
+    .section_main {
+        width: 100%;
+        height: auto;
+        min-height: calc(100vh - 64px);
+        box-sizing: border-box;
+        padding: 25px 16px 40px;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    .container_titulo_main {
+        width: 100%;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding-top: 0;
+    }
+
+    .container_titulo_main div {
+        width: 100%;
+        height: auto;
+        gap: 5px;
+    }
+
+    .container_titulo_main strong {
+        font-size: 10px;
+        line-height: 14px;
+        letter-spacing: 1.2px;
+    }
+
+    .container_titulo_main h1 {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: -1px;
+        margin: 0;
+    }
+
+    .container_titulo_main p {
+        width: 100%;
+        font-size: 13px;
+        line-height: 20px;
+        margin: 0;
+    }
+
+    .container_form {
+        width: 100%;
+        min-height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding-top: 25px;
+    }
+
+    .container_form div {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        min-height: auto;
+        gap: 7px;
+    }
+
+    .container_form label {
+        font-size: 12px;
+        line-height: 17px;
+    }
+
+    .container_form input,
+    .container_form select {
+        width: 100%;
+        height: 46px;
+        min-height: 46px;
+        box-sizing: border-box;
+        padding: 0 12px;
+        font-size: 13px;
+    }
+
+    .container_tabela {
+        width: 100%;
+        margin-top: 25px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabela {
+        width: 900px;
+        min-width: 900px;
+        table-layout: fixed;
+    }
+
+    .tabela th {
+        height: 55px;
+        padding: 0 16px;
+        font-size: 9px;
+        line-height: 15px;
+    }
+
+    .tabela td {
+        height: 90px;
+        padding: 0 16px;
+        font-size: 11px;
+        line-height: 17px;
+    }
+
+    .tabela th:nth-child(1),
+    .tabela td:nth-child(1) {
+        width: 220px;
+    }
+
+    .tabela th:nth-child(2),
+    .tabela td:nth-child(2) {
+        width: 200px;
+    }
+
+    .tabela th:nth-child(3),
+    .tabela td:nth-child(3) {
+        width: 180px;
+    }
+
+    .tabela th:nth-child(4),
+    .tabela td:nth-child(4) {
+        width: 190px;
+    }
+
+    .tabela th:nth-child(5),
+    .tabela td:nth-child(5) {
+        width: 110px;
+    }
+
+    .aluno {
+        gap: 10px;
+    }
+
+    .avatar {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        font-size: 11px;
+    }
+
+    .informacoes_aluno strong {
+        font-size: 12px;
+        line-height: 17px;
+    }
+
+    .informacoes_aluno span {
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .faixa {
+        gap: 8px;
+    }
+
+    .faixa img {
+        width: 45px;
+        height: 21px;
+    }
+
+    .faixa span {
+        font-size: 11px;
+        line-height: 17px;
+    }
+
+    .faixa small {
+        font-size: 10px;
+    }
+
+    .presenca {
+        gap: 8px;
+        width: auto;
+    }
+
+    .barra_presenca {
+        width: 80px;
+        height: 6px;
+    }
+
+    .progresso_presenca {
+        height: 6px;
+    }
+
+    .presenca span {
+        min-width: 32px;
+        font-size: 10px;
+        line-height: 16px;
+    }
+
+    .proxima_avaliacao {
+        font-size: 11px;
+        line-height: 17px;
+    }
+
+    .botao_avaliar {
+        width: 70px;
+        height: 40px;
+        font-size: 11px;
+    }
+}
+/* Responsividade para tablet */
+
+@media (min-width: 769px) and (max-width: 1050px) {
+
+    .container {
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    .header {
+        min-height: 78px;
+        padding: 14px 28px;
+    }
+
+    .section_main {
+        width: 100%;
+        height: auto;
+        min-height: calc(100vh - 78px);
+        padding: 30px 28px 60px;
+    }
+
+    .container_titulo_main {
+        width: 100%;
+        min-height: 90px;
+        height: auto;
+    }
+
+    .container_titulo_main h1 {
+        font-size: 36px;
+        line-height: 42px;
+    }
+
+    .container_form {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        padding-top: 25px;
+    }
+
+    .container_form div {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .container_form input,
+    .container_form select {
+        width: 100%;
+    }
+
+    .container_tabela {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabela {
+        min-width: 900px;
+        width: 100%;
+    }
+
+    .tabela th,
+    .tabela td {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .aluno {
+        gap: 10px;
+    }
+
+    .avatar {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+    }
+
+    .faixa {
+        gap: 8px;
+    }
+
+    .faixa img {
+        width: 48px;
+        height: 22px;
+    }
+
+    .barra_presenca {
+        width: 85px;
+    }
+
+    .botao_avaliar {
+        width: 75px;
+        height: 40px;
+    }
+}

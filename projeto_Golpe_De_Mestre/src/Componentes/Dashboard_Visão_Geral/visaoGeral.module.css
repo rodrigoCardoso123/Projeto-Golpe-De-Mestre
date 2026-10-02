@@ -811,3 +811,657 @@
     letter-spacing: -0.59px;
 
 }
+
+/* Responsividade para celular */
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        max-height: none;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    .header {
+        width: 100%;
+        min-height: 70px;
+        box-sizing: border-box;
+        padding: 12px 16px;
+        align-items: center;
+    }
+
+    .titulo_header {
+        width: auto;
+        height: auto;
+    }
+
+    .titulo_header strong {
+        font-size: 14px;
+    }
+
+    .titulo_header p {
+        font-size: 11px;
+        line-height: 15px;
+        margin: 2px 0 0;
+    }
+
+    .perfil_header {
+        width: auto;
+        height: 40px;
+        gap: 8px;
+    }
+
+    .icone_header {
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .conteudo_perfil {
+        width: auto;
+        height: 40px;
+        gap: 7px;
+    }
+
+    .conteudo_perfil p {
+        width: 36px;
+        height: 36px;
+        padding: 9px;
+        box-sizing: border-box;
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .conteudo_perfil div {
+        width: auto;
+        max-width: 100px;
+        height: auto;
+        padding-top: 1px;
+    }
+
+    .conteudo_perfil strong {
+        font-size: 11px;
+        line-height: 14px;
+    }
+
+    .conteudo_perfil small {
+        font-size: 9px;
+        line-height: 12px;
+    }
+
+    .section_main {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 25px 16px 50px;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    .container_titulo_main {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 0;
+    }
+
+    .container_titulo_main div {
+        width: 100%;
+        height: auto;
+        gap: 5px;
+    }
+
+    .container_titulo_main strong {
+        font-size: 10px;
+        line-height: 14px;
+        letter-spacing: 1.2px;
+    }
+
+    .container_titulo_main h1 {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: -1px;
+        margin: 0;
+    }
+
+    .container_titulo_main p {
+        font-size: 13px;
+        line-height: 20px;
+        margin: 0;
+    }
+
+    .container_titulo_main button {
+        width: 100%;
+        height: 46px;
+        font-size: 13px;
+        border-radius: 6px;
+    }
+
+    .container_informacoes {
+        width: 100%;
+        height: auto;
+        padding-top: 25px;
+    }
+
+    .conteudo_informacoes {
+        width: 100%;
+        max-width: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: auto;
+    }
+
+    .card_informacoes {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 145px;
+        box-sizing: border-box;
+        padding: 20px 16px;
+        border-right: 1px solid #E4E8EE;
+        border-bottom: 1px solid #E4E8EE;
+    }
+
+    .card_informacoes:nth-child(2n) {
+        border-right: none;
+    }
+
+    .card_informacoes:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+
+    .card_titulo {
+        width: 100%;
+        height: auto;
+        gap: 5px;
+    }
+
+    .card_informacoes p {
+        font-size: 11px;
+        line-height: 15px;
+    }
+
+    .card_informacoes h1 {
+        font-size: 30px;
+        line-height: 32px;
+        margin: 4px 0;
+    }
+
+    .section_agenda {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding-top: 25px;
+    }
+
+    .container_principal_agenda {
+        width: 100%;
+        height: auto;
+    }
+
+    .conteudo_agenda {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        box-sizing: border-box;
+        padding: 20px 16px 25px;
+    }
+
+    .conteudo_agenda_titulo {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 45px;
+    }
+
+    .conteudo_agenda_titulo strong {
+        font-size: 10px;
+        line-height: 14px;
+        letter-spacing: 1.2px;
+    }
+
+    .conteudo_agenda_titulo h1 {
+        font-size: 24px;
+        line-height: 26px;
+        margin: 0;
+    }
+
+    .conteudo_agenda_titulo a {
+        font-size: 13px;
+    }
+
+    .calendario_agenda {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 15px;
+        gap: 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        box-sizing: border-box;
+    }
+
+    .dia_calendario {
+        min-width: 48px;
+        max-width: 48px;
+        height: 75px;
+        padding: 7px 3px;
+    }
+
+    .nome_dia {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .numero_dia {
+        font-size: 21px;
+        line-height: 26px;
+    }
+
+    .bolinha {
+        width: 6px;
+        height: 6px;
+    }
+
+    .conteudo_sem_aulas {
+        padding-top: 25px;
+    }
+
+    .icone_sem_aulas {
+        width: 25px;
+        height: 25px;
+        margin-bottom: 10px;
+    }
+
+    .conteudo_sem_aulas h1 {
+        font-size: 21px;
+        line-height: 25px;
+        margin-bottom: 10px;
+    }
+
+    .conteudo_sem_aulas p {
+        font-size: 13px;
+        line-height: 19px;
+        margin-bottom: 12px;
+    }
+
+    .conteudo_sem_aulas p br {
+        display: none;
+    }
+
+    .conteudo_sem_aulas a {
+        font-size: 14px;
+        gap: 10px;
+    }
+
+    .conteudo_sem_aulas a span {
+        font-size: 20px;
+    }
+
+    .pontos_de_atencao {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        box-sizing: border-box;
+        padding: 20px 16px;
+    }
+
+    .titulo_pontos h1 {
+        font-size: 21px;
+        line-height: 25px;
+    }
+
+    .titulo_pontos strong {
+        font-size: 9px;
+        line-height: 14px;
+    }
+
+    .icone_pontos {
+        width: 25px;
+        height: 25px;
+    }
+
+    .lista_pontos {
+        margin-top: 10px;
+    }
+
+    .item_ponto {
+        min-height: 82px;
+    }
+
+    .numero_ponto {
+        min-width: 45px;
+        width: 45px;
+        height: 45px;
+        font-size: 21px;
+    }
+
+    .texto_ponto {
+        margin-left: 12px;
+    }
+
+    .texto_ponto strong {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .texto_ponto p {
+        font-size: 11px;
+        line-height: 16px;
+        margin-top: 4px;
+    }
+
+    .seta_ponto {
+        font-size: 26px;
+    }
+
+    .observacao_pontos {
+        margin-top: 20px;
+    }
+
+    .icone_observacao {
+        min-width: 25px;
+        width: 25px;
+        height: 25px;
+        margin-right: 12px;
+    }
+
+    .observacao_pontos p {
+        font-size: 11px;
+        line-height: 18px;
+    }
+
+    .section_acompanhamento_comunidade {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 25px 0;
+    }
+
+    .container_acompanhamento {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        box-sizing: border-box;
+        padding: 20px 16px;
+    }
+
+    .titulo_acompanhamento {
+        height: auto;
+        min-height: 45px;
+    }
+
+    .titulo_acompanhamento strong {
+        font-size: 9px;
+        line-height: 14px;
+    }
+
+    .titulo_acompanhamento h1 {
+        font-size: 21px;
+        line-height: 25px;
+        margin: 0;
+    }
+
+    .titulo_acompanhamento a {
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .lista_turmas {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .turma {
+        min-height: 72px;
+        gap: 10px;
+    }
+
+    .info_turma {
+        min-width: 0;
+        gap: 3px;
+    }
+
+    .info_turma strong {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .info_turma p {
+        font-size: 11px;
+        line-height: 15px;
+    }
+
+    .progresso_turma {
+        width: 48%;
+        gap: 8px;
+    }
+
+    .barra_progresso {
+        width: 100%;
+        max-width: 100px;
+        height: 5px;
+    }
+
+    .progresso_turma strong {
+        font-size: 12px;
+    }
+
+    .p_Footer {
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .container_comunidade {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 250px;
+        box-sizing: border-box;
+        padding: 20px 16px;
+    }
+
+    .conteudo_comunidade {
+        height: auto;
+        min-height: 130px;
+        padding-top: 20px;
+    }
+
+    .conteudo_comunidade p {
+        font-size: 12px;
+        line-height: 17px;
+        margin: 0;
+    }
+
+    .conteudo_comunidade h1 {
+        font-size: 21px;
+        line-height: 26px;
+        margin: 8px 0;
+    }
+}
+
+/* Responsividade para tablet */
+
+@media (min-width: 769px) and (max-width: 1050px) {
+
+    .container {
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    .header {
+        min-height: 78px;
+        padding: 14px 28px;
+    }
+
+    .section_main {
+        width: 100%;
+        height: auto;
+        min-height: calc(100vh - 78px);
+        padding: 30px 28px 60px;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    .container_titulo_main {
+        min-height: 100px;
+        height: auto;
+        gap: 20px;
+    }
+
+    .container_titulo_main div {
+        width: auto;
+        max-width: 500px;
+        height: auto;
+    }
+
+    .container_titulo_main h1 {
+        font-size: 36px;
+        line-height: 42px;
+    }
+
+    .container_titulo_main button {
+        flex-shrink: 0;
+    }
+
+    .container_informacoes {
+        width: 100%;
+        height: auto;
+        padding-top: 25px;
+    }
+
+    .conteudo_informacoes {
+        width: 100%;
+        max-width: none;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card_informacoes {
+        width: 100%;
+        max-width: none;
+        min-height: 145px;
+        height: auto;
+    }
+
+    .card_informacoes:nth-child(2) {
+        border-right: none;
+    }
+
+    .card_informacoes:nth-child(3),
+    .card_informacoes:nth-child(4) {
+        border-top: 1px solid #E4E8EE;
+    }
+
+    .section_agenda {
+        width: 100%;
+        max-width: none;
+        min-height: auto;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1.45fr 0.85fr;
+        gap: 20px;
+        padding-top: 25px;
+    }
+
+    .container_principal_agenda {
+        width: 100%;
+        height: auto;
+    }
+
+    .conteudo_agenda {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 469px;
+        padding: 22px;
+    }
+
+    .conteudo_agenda_titulo {
+        max-width: none;
+    }
+
+    .calendario_agenda {
+        max-width: none;
+        gap: 7px;
+    }
+
+    .dia_calendario {
+        min-width: 0;
+        height: 78px;
+    }
+
+    .pontos_de_atencao {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 469px;
+        padding: 22px;
+    }
+
+    .item_ponto {
+        min-height: 85px;
+    }
+
+    .numero_ponto {
+        min-width: 50px;
+        width: 50px;
+        height: 50px;
+        font-size: 23px;
+    }
+
+    .texto_ponto {
+        margin-left: 15px;
+    }
+
+    .texto_ponto strong {
+        font-size: 14px;
+        line-height: 19px;
+    }
+
+    .texto_ponto p {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .section_acompanhamento_comunidade {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 380px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 25px 0;
+    }
+
+    .container_acompanhamento,
+    .container_comunidade {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 363px;
+    }
+
+    .progresso_turma {
+        width: 250px;
+        gap: 10px;
+    }
+
+    .barra_progresso {
+        width: 120px;
+    }
+}
