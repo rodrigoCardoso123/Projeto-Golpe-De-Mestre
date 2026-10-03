@@ -19,7 +19,13 @@ import {
   LuSun,
   LuPlus
 } from "react-icons/lu";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../lib/auth";
+
 function Equipe_e_Acesso(){
+    const navigate = useNavigate();
+    const { perfil } = useAuth();
+    const ehAdministrador = perfil?.papel === "administrador";
     const dataHoje = new Date().toLocaleDateString("pt-BR", {
         weekday: "long",
         day: "numeric",
@@ -59,10 +65,15 @@ function Equipe_e_Acesso(){
                         </div>
 
                         <div className={estilo.acoes_titulo}>
-                            <button className={estilo.botao_exportar}>
-                                <LuPlus size={21} />
-                                Novo perfil local
-                            </button>
+                            {ehAdministrador && (
+                                <button
+                                    className={estilo.botao_exportar}
+                                    onClick={() => navigate("/Dashboard/equipe/novo")}
+                                >
+                                    <LuPlus size={21} />
+                                    Novo acesso
+                                </button>
+                            )}
                         </div>
                     </div>
 

@@ -1,11 +1,27 @@
 import estilo from "./turmas.module.css";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LuBell, LuLayers3, LuUserRound, LuDumbbell, LuClock, LuMapPin, LuUsersRound, LuChevronRight } from "react-icons/lu";
-import turmas from "./dadosTurmas.js";
+import { listarTurmas } from "../../lib/turmasService";
 
 function Turmas(){
     const navigate = useNavigate();
+    const [turmas, setTurmas] = useState([]);
+    const [carregando, setCarregando] = useState(true);
+    const [erro, setErro] = useState("");
     const Hoje = new Date();
+
+    useEffect(() => {
+        let cancelado = false;
+
+        listarTurmas()
+            .then((dados) => { if (!cancelado) setTurmas(dados); })
+            .catch((e) => { if (!cancelado) setErro(e.message); })
+            .finally(() => { if (!cancelado) setCarregando(false); });
+
+        return () => { cancelado = true; };
+    }, []);
+
     return(
         <>
             <main className={estilo.container}>
@@ -58,7 +74,10 @@ function Turmas(){
                     </div>
 
                     <div className={estilo.container_cards}>
-                        {turmas.map((turma) => (
+                        {erro && <p>{erro}</p>}
+                        {carregando && <p>Carregando turmas...</p>}
+                        {!carregando && !erro && turmas.length === 0 && <p>Nenhuma turma cadastrada.</p>}
+                        {!carregando && turmas.map((turma) => (
                             <article key={turma.id} className={estilo.card_turma}>
 
                                 <div className={estilo.topo_card}>
@@ -120,7 +139,7 @@ function Turmas(){
                                     <div className={estilo.barra}>
                                         <div
                                             className={estilo.progresso}
-                                            style={{ width: `${(turma.alunosAtivos / turma.capacidade) * 100}%` }}
+                                            style={{ width: `${turma.capacidade > 0 ? Math.min((turma.alunosAtivos / turma.capacidade) * 100, 100) : 0}%` }}
                                         ></div>
                                     </div>
                                 </div>

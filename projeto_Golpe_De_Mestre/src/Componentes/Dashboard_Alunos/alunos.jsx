@@ -1,11 +1,27 @@
 import estilo from "./alunos.module.css"
 import { Link, useNavigate } from "react-router-dom";
 import { LuBell } from "react-icons/lu";
-import alunos from "./dadosAlunos.js";
+import { useEffect, useState } from "react";
+import { listarAlunos } from "../../lib/alunosService";
 
 function Alunos(){
     const navigate = useNavigate();
+    const [alunos, setAlunos] = useState([]);
+    const [carregando, setCarregando] = useState(true);
+    const [erro, setErro] = useState("");
     const Hoje = new Date();
+
+    useEffect(() => {
+        let cancelado = false;
+
+        listarAlunos()
+            .then((dados) => { if (!cancelado) setAlunos(dados); })
+            .catch((e) => { if (!cancelado) setErro(e.message); })
+            .finally(() => { if (!cancelado) setCarregando(false); });
+
+        return () => { cancelado = true; };
+    }, []);
+
     return(
         <>
             <main className={estilo.container}>
@@ -86,7 +102,10 @@ function Alunos(){
                             </thead>
 
                             <tbody>
-                                {alunos.map((aluno) => (
+                                {erro && <p>{erro}</p>}
+                                {carregando && <p>Carregando alunos...</p>}
+                                {!carregando && !erro && alunos.length === 0 && <p>Nenhum aluno cadastrado.</p>}
+                                {!carregando && alunos.map((aluno) => (
                                     <tr key={aluno.id}>
                                         <td>
                                             <Link

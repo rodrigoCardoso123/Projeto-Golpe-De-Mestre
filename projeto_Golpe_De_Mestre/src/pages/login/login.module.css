@@ -191,6 +191,17 @@
     letter-spacing: 0px;
 
 }
+.container_login .erro_login{
+    color: #B3261E;
+    font-size: 14px;
+    line-height: 18px;
+    margin: -5px 0 0 0;
+    padding: 10px 12px;
+    background-color: #FDECEA;
+    border: 1px solid #F5C2BE;
+    border-radius: 5px;
+    width: 100%;
+}
 .container_login form{
     width: 100%;
     display: flex;
@@ -210,6 +221,18 @@
     min-height: 44px;
     opacity: 1;
     border: #AFB9C7 1px solid;
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 12px;
+    border-radius: 8px;
+}
+.container_login input:-webkit-autofill{
+    -webkit-text-fill-color: #000000;
+    -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset;
+    caret-color: #000000;
 }
 .container_login label{
     color: #1C1F24;

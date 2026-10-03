@@ -4,6 +4,8 @@ import Home from './pages/Home/home'
 import Topo from './Componentes/Topo/topo'
 import Login from './pages/login/login'
 import Dashboard from './pages/Dashboard/dashboard'
+import { AuthProvider } from './lib/auth'
+import { RotaPrivada } from './Componentes/RotaPrivada/rotaPrivada'
 function Rotas() {
   const location = useLocation();
 
@@ -18,7 +20,14 @@ function Rotas() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Dashboard/*" element={<Dashboard />} />
+        <Route
+          path="/Dashboard/*"
+          element={
+            <RotaPrivada>
+              <Dashboard />
+            </RotaPrivada>
+          }
+        />
       </Routes>
     </>
   )
@@ -27,7 +36,9 @@ function Rotas() {
 function App() {
   return (
     <BrowserRouter>
-      <Rotas />
+      <AuthProvider>
+        <Rotas />
+      </AuthProvider>
     </BrowserRouter>
   )
 }

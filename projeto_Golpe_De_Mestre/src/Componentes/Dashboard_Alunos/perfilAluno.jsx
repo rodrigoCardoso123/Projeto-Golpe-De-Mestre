@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import estilo from "./perfilAluno.module.css";
 import {
@@ -10,25 +10,51 @@ import {
     LuCalendarDays,
     LuLayers3
 } from "react-icons/lu";
-import { buscarAlunoPorId } from "./dadosAlunos.js";
+import { buscarAlunoPorId } from "../../lib/alunosService";
 
 const abas = ["Resumo", "Presença", "Graduação", "Responsáveis", "Observações"];
 
 function PerfilAluno() {
     const navigate = useNavigate();
     const { id } = useParams();
-    const aluno = buscarAlunoPorId(id);
 
+    const [aluno, setAluno] = useState(null);
+    const [carregando, setCarregando] = useState(true);
+    const [erro, setErro] = useState("");
     const [abaAtiva, setAbaAtiva] = useState("Resumo");
 
-    if (!aluno) {
+    useEffect(() => {
+        let cancelado = false;
+        setCarregando(true);
+
+        buscarAlunoPorId(id)
+            .then((dados) => { if (!cancelado) setAluno(dados); })
+            .catch((e) => { if (!cancelado) setErro(e.message); })
+            .finally(() => { if (!cancelado) setCarregando(false); });
+
+        return () => { cancelado = true; };
+    }, [id]);
+
+    if (carregando) {
+        return (
+            <main className={estilo.container}>
+                <section className={estilo.section_main}>
+                    <div className={estilo.cartao}>
+                        <h2>Carregando aluno...</h2>
+                    </div>
+                </section>
+            </main>
+        );
+    }
+
+    if (erro || !aluno) {
         return (
             <main className={estilo.container}>
                 <section className={estilo.section_main}>
                     <div className={estilo.cartao}>
                         <h2>Aluno não encontrado</h2>
                         <p className={estilo.descricao_cartao}>
-                            O aluno com id {id} não existe.
+                            {erro || `O aluno com id ${id} não existe.`}
                         </p>
                         <button
                             type="button"

@@ -1,11 +1,20 @@
 # Dependências
 node_modules/
 
+# Variáveis de ambiente (chaves do Supabase etc.)
+.env
+.env.local
+.env.*.local
+
 # Build
 dist/
 
 # Vite
 .vite/
+
+# Editor
+.vscode/
+.idea/
 
 # Logs e arquivos temporários
 *.log

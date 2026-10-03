@@ -21,7 +21,16 @@ import Doacoes from "../../Componentes/Dashboard_Doações/Doacoes";
 import Financeiro from "../../Componentes/Dashboard_Financeiro/Financeiro";
 import Apoiadores from "../../Componentes/Dashboard_Apoiadores/Apoiadores";
 import Equipe_e_Acesso from "../../Componentes/Dashboard_Equipe_e_Acesso/Equipe_e_Acesso";
+import NovoAcesso from "../../Componentes/Dashboard_Novo_Acesso/novoAcesso";
 import Configuracao from "../../Componentes/Dashboard_Configurações/Configuração";
+import { SomenteCargos } from "../../Componentes/RotaPrivada/rotaPrivada";
+
+// Envolve a tela na guarda de cargo correspondente. O nome da área bate com o
+// mapa em src/lib/permissoes.js — se divergir, a rota fica bloqueada para todos.
+function Protegida({ area, children }) {
+  return <SomenteCargos area={area}>{children}</SomenteCargos>;
+}
+
 function Dashboard(){
     return(
         <>
@@ -30,29 +39,31 @@ function Dashboard(){
 
             <main className={estilo.dashboard}>
                 <Routes>
-                    <Route path="/" element={<VisaoGeral/>} />
-                    <Route path="inscricoes" element={<Inscricoes/>} />
-                    <Route path="inscricoes/nova" element={<NovaInscricao/>} />
-                    <Route path="alunos" element={<Alunos/>} />
-                    <Route path="alunos/novo" element={<NovoAluno/>} />
-                    <Route path="alunos/perfil/:id" element={<PerfilAluno/>} />
-                    <Route path="alunos/perfil/:id/editar" element={<EditarAluno/>} />
+                    <Route path="/" element={<Protegida area="visaoGeral"><VisaoGeral/></Protegida>} />
+                    <Route path="inscricoes" element={<Protegida area="inscricoes"><Inscricoes/></Protegida>} />
+                    <Route path="inscricoes/nova" element={<Protegida area="novaInscricao"><NovaInscricao/></Protegida>} />
+                    <Route path="alunos" element={<Protegida area="alunos"><Alunos/></Protegida>} />
+                    <Route path="alunos/novo" element={<Protegida area="novoAluno"><NovoAluno/></Protegida>} />
+                    <Route path="alunos/perfil/:id" element={<Protegida area="alunos"><PerfilAluno/></Protegida>} />
+                    <Route path="alunos/perfil/:id/editar" element={<Protegida area="editarAluno"><EditarAluno/></Protegida>} />
                     <Route path="alunos/perfil" element={<Navigate to="/Dashboard/alunos" replace/>} />
                     <Route path="alunos/perfil/editar" element={<Navigate to="/Dashboard/alunos" replace/>} />
-                    <Route path="turmas" element={<Turmas/>} />
-                    <Route path="diario" element={<DiarioDeAula/>} />
-                    <Route path="presenca" element={<Presenca/>} />
-                    <Route path="desenvolvimento" element={<Faixas/>} />
-                    <Route path="atividades" element={<Atividades/>} />
-                    <Route path="comunicados" element={<Comunicados/>} />
-                    <Route path="solicitacoes" element={<Solicitacoes/>} />
-                    <Route path="relatorios" element={<Relatorios/>} />
-                    <Route path="visitas" element={<Visitas/>} />
-                    <Route path="doacoes" element={<Doacoes/>} />
-                    <Route path="financeiro" element={<Financeiro/>} />
-                    <Route path="apoiadores" element={<Apoiadores/>} />
-                    <Route path="equipe" element={<Equipe_e_Acesso/>} />
-                    <Route path="configuracoes" element={<Configuracao/>} />
+                    <Route path="turmas" element={<Protegida area="turmas"><Turmas/></Protegida>} />
+                    <Route path="diario" element={<Protegida area="diario"><DiarioDeAula/></Protegida>} />
+                    <Route path="presenca" element={<Protegida area="presenca"><Presenca/></Protegida>} />
+                    <Route path="desenvolvimento" element={<Protegida area="desenvolvimento"><Faixas/></Protegida>} />
+                    <Route path="atividades" element={<Protegida area="atividades"><Atividades/></Protegida>} />
+                    <Route path="comunicados" element={<Protegida area="comunicados"><Comunicados/></Protegida>} />
+                    <Route path="solicitacoes" element={<Protegida area="solicitacoes"><Solicitacoes/></Protegida>} />
+                    <Route path="relatorios" element={<Protegida area="relatorios"><Relatorios/></Protegida>} />
+                    <Route path="visitas" element={<Protegida area="visitas"><Visitas/></Protegida>} />
+                    <Route path="doacoes" element={<Protegida area="doacoes"><Doacoes/></Protegida>} />
+                    <Route path="financeiro" element={<Protegida area="financeiro"><Financeiro/></Protegida>} />
+                    <Route path="apoiadores" element={<Protegida area="apoiadores"><Apoiadores/></Protegida>} />
+                    <Route path="equipe" element={<Protegida area="equipe"><Equipe_e_Acesso/></Protegida>} />
+                    <Route path="equipe/novo" element={<Protegida area="novoAcesso"><NovoAcesso/></Protegida>} />
+                    <Route path="configuracoes" element={<Protegida area="configuracoes"><Configuracao/></Protegida>} />
+                    <Route path="*" element={<Navigate to="/Dashboard" replace/>} />
                 </Routes>
             </main>
         </div>

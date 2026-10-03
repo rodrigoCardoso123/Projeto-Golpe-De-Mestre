@@ -2,6 +2,9 @@ import estilo from "./sidebar.module.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import imgLogo from "../../assets/imgLogo.png";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../lib/auth";
+import { podeAcessar, rotuloCargo } from "../../lib/permissoes";
 
 import {
     LuLayoutGrid,
@@ -22,7 +25,8 @@ import {
     LuUserRoundCheck,
     LuSun,
     LuMenu,
-    LuX
+    LuX,
+    LuLogOut
 } from "react-icons/lu";
 
 
@@ -50,8 +54,21 @@ function SideBar() {
 
     const [menuAberto, setMenuAberto] = useState(false);
 
+    const navigate = useNavigate();
+    const { perfil, logout } = useAuth();
+
+    // Esconde do menu as áreas que o cargo atual não pode acessar.
+    // A guarda das rotas em rotaPrivada.jsx usa o mesmo mapa, então o que
+    // some aqui também está bloqueado se a pessoa digitar a URL.
+    const podeVer = (area) => podeAcessar(perfil?.papel, area);
+
     const fecharMenu = () => {
         setMenuAberto(false);
+    };
+
+    const sair = async () => {
+        await logout();
+        navigate("/Login", { replace: true });
     };
 
     return (
@@ -130,164 +147,124 @@ function SideBar() {
 
                         <h1>Gestão educacional</h1>
 
-                        <ItemMenu
-                            to="/Dashboard"
-                            end
-                            onClick={fecharMenu}
-                        >
-                            <LuLayoutGrid size={18} />
-                            Visão geral
-                        </ItemMenu>
+                        {podeVer("visaoGeral") && (
+                            <ItemMenu to="/Dashboard" endonClick={fecharMenu}>
+                                <LuLayoutGrid size={18} />
+                                Visão geral
+                            </ItemMenu>
+                        )}
 
+                        {podeVer("inscricoes") && (
+                            <ItemMenu to="/Dashboard/inscricoes" onClick={fecharMenu}>
+                                <LuFilePlus2 size={18} />
+                                Inscrições e matrículas
+                            </ItemMenu>
+                        )}
 
-                        <ItemMenu
-                            to="/Dashboard/inscricoes"
-                            onClick={fecharMenu}
-                        >
-                            <LuFilePlus2 size={18} />
-                            Inscrições e matrículas
-                        </ItemMenu>
+                        {podeVer("alunos") && (
+                            <ItemMenu to="/Dashboard/alunos" onClick={fecharMenu}>
+                                <LuUsersRound size={18} />
+                                Alunos
+                            </ItemMenu>
+                        )}
 
+                        {podeVer("turmas") && (
+                            <ItemMenu to="/Dashboard/turmas" onClick={fecharMenu}>
+                                <LuLayers3 size={18} />
+                                Turmas e horários
+                            </ItemMenu>
+                        )}
 
-                        <ItemMenu
-                            to="/Dashboard/alunos"
-                            onClick={fecharMenu}
-                        >
-                            <LuUsersRound size={18} />
-                            Alunos
-                        </ItemMenu>
+                        {podeVer("diario") && (
+                            <ItemMenu to="/Dashboard/diario" onClick={fecharMenu}>
+                                <LuBookOpen size={18} />
+                                Diário de aula
+                            </ItemMenu>
+                        )}
 
+                        {podeVer("presenca") && (
+                            <ItemMenu to="/Dashboard/presenca" onClick={fecharMenu}>
+                                <LuCheck size={18} />
+                                Presença
+                            </ItemMenu>
+                        )}
 
-                        <ItemMenu
-                            to="/Dashboard/turmas"
-                            onClick={fecharMenu}
-                        >
-                            <LuLayers3 size={18} />
-                            Turmas e horários
-                        </ItemMenu>
+                        {podeVer("desenvolvimento") && (
+                            <ItemMenu to="/Dashboard/desenvolvimento" onClick={fecharMenu}>
+                                <LuPresentation size={18} />
+                                Desenvolvimento
+                            </ItemMenu>
+                        )}
 
+                        {podeVer("atividades") && (
+                            <ItemMenu to="/Dashboard/atividades" onClick={fecharMenu}>
+                                <LuClipboardList size={18} />
+                                Atividades
+                            </ItemMenu>
+                        )}
 
-                        <ItemMenu
-                            to="/Dashboard/diario"
-                            onClick={fecharMenu}
-                        >
-                            <LuBookOpen size={18} />
-                            Diário de aula
-                        </ItemMenu>
+                        {podeVer("comunicados") && (
+                            <ItemMenu to="/Dashboard/comunicados" onClick={fecharMenu}>
+                                <LuBell size={18} />
+                                Comunicados
+                            </ItemMenu>
+                        )}
 
+                        {podeVer("solicitacoes") && (
+                            <ItemMenu to="/Dashboard/solicitacoes" onClick={fecharMenu}>
+                                <LuMail size={18} />
+                                Solicitações
+                            </ItemMenu>
+                        )}
 
-                        <ItemMenu
-                            to="/Dashboard/presenca"
-                            onClick={fecharMenu}
-                        >
-                            <LuCheck size={18} />
-                            Presença
-                        </ItemMenu>
+                        {podeVer("visitas") && (
+                            <ItemMenu to="/Dashboard/visitas" onClick={fecharMenu}>
+                                <LuCalendarDays size={18} />
+                                Visitas ao projeto
+                            </ItemMenu>
+                        )}
 
+                        {podeVer("relatorios") && (
+                            <ItemMenu to="/Dashboard/relatorios" onClick={fecharMenu}>
+                                <LuChartNoAxesColumnIncreasing size={18} />
+                                Relatórios
+                            </ItemMenu>
+                        )}
 
-                        <ItemMenu
-                            to="/Dashboard/desenvolvimento"
-                            onClick={fecharMenu}
-                        >
-                            <LuPresentation size={18} />
-                            Desenvolvimento
-                        </ItemMenu>
+                        {podeVer("doacoes") && (
+                            <ItemMenu to="/Dashboard/doacoes" onClick={fecharMenu}>
+                                <LuHeart size={18} />
+                                Doações
+                            </ItemMenu>
+                        )}
 
+                        {podeVer("financeiro") && (
+                            <ItemMenu to="/Dashboard/financeiro" onClick={fecharMenu}>
+                                <LuWalletCards size={18} />
+                                Financeiro
+                            </ItemMenu>
+                        )}
 
-                        <ItemMenu
-                            to="/Dashboard/atividades"
-                            onClick={fecharMenu}
-                        >
-                            <LuClipboardList size={18} />
-                            Atividades
-                        </ItemMenu>
+                        {podeVer("apoiadores") && (
+                            <ItemMenu to="/Dashboard/apoiadores" onClick={fecharMenu}>
+                                <LuShield size={18} />
+                                Apoiadores
+                            </ItemMenu>
+                        )}
 
+                        {podeVer("equipe") && (
+                            <ItemMenu to="/Dashboard/equipe" onClick={fecharMenu}>
+                                <LuUserRoundCheck size={18} />
+                                Equipe e acessos
+                            </ItemMenu>
+                        )}
 
-                        <h1>Relacionamento</h1>
-
-
-                        <ItemMenu
-                            to="/Dashboard/comunicados"
-                            onClick={fecharMenu}
-                        >
-                            <LuBell size={18} />
-                            Comunicados
-                        </ItemMenu>
-
-
-                        <ItemMenu
-                            to="/Dashboard/solicitacoes"
-                            onClick={fecharMenu}
-                        >
-                            <LuMail size={18} />
-                            Solicitações
-                        </ItemMenu>
-
-
-                        <ItemMenu
-                            to="/Dashboard/visitas"
-                            onClick={fecharMenu}
-                        >
-                            <LuCalendarDays size={18} />
-                            Visitas ao projeto
-                        </ItemMenu>
-
-
-                        <h1>Institucional</h1>
-
-
-                        <ItemMenu
-                            to="/Dashboard/relatorios"
-                            onClick={fecharMenu}
-                        >
-                            <LuChartNoAxesColumnIncreasing size={18} />
-                            Relatórios
-                        </ItemMenu>
-
-
-                        <ItemMenu
-                            to="/Dashboard/doacoes"
-                            onClick={fecharMenu}
-                        >
-                            <LuHeart size={18} />
-                            Doações
-                        </ItemMenu>
-
-
-                        <ItemMenu
-                            to="/Dashboard/financeiro"
-                            onClick={fecharMenu}
-                        >
-                            <LuWalletCards size={18} />
-                            Financeiro
-                        </ItemMenu>
-
-
-                        <ItemMenu
-                            to="/Dashboard/apoiadores"
-                            onClick={fecharMenu}
-                        >
-                            <LuShield size={18} />
-                            Apoiadores
-                        </ItemMenu>
-
-
-                        <ItemMenu
-                            to="/Dashboard/equipe"
-                            onClick={fecharMenu}
-                        >
-                            <LuUserRoundCheck size={18} />
-                            Equipe e acessos
-                        </ItemMenu>
-
-
-                        <ItemMenu
-                            to="/Dashboard/configuracoes"
-                            onClick={fecharMenu}
-                        >
-                            <LuSun size={18} />
-                            Configurações
-                        </ItemMenu>
+                        {podeVer("configuracoes") && (
+                            <ItemMenu to="/Dashboard/configuracoes" onClick={fecharMenu}>
+                                <LuSun size={18} />
+                                Configurações
+                            </ItemMenu>
+                        )}
 
                     </ul>
 
@@ -297,8 +274,14 @@ function SideBar() {
                 <div className={estilo.rodape_sidebar}>
 
                     <span className={estilo.badge_perfil}>
-                        Administrador
+                        {perfil?.nome ?? "—"}
+                        <small>{rotuloCargo(perfil?.papel)}</small>
                     </span>
+
+                    <button type="button" onClick={sair}>
+                        <LuLogOut size={16} />
+                        Sair da conta
+                    </button>
 
                     <p>
                         <strong>Mais que lutas.</strong>
