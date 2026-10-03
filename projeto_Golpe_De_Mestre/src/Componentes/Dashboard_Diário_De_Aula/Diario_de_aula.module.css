@@ -458,6 +458,145 @@
 
     color: var(--cor-azul-aula);
 }
+
+/* Ações do cabeçalho: exportação, impressão e o botão principal em azul */
+.acoes_titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 6px;
+}
+
+.acoes_titulo button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: auto;
+    height: 44px;
+    min-height: 44px;
+    padding: 10px 16px;
+    box-sizing: border-box;
+
+    border-radius: 5px;
+
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 19px;
+
+    cursor: pointer;
+}
+
+.acoes_titulo button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* O botão azul da direita é o .container_titulo_main button puro; os outros
+   dois precisam do próprio estilo. */
+.acoes_titulo .botao_exportar {
+    background-color: #FFFFFF;
+    border: 0.8px solid var(--cor-borda-botao-aula);
+    color: var(--cor-texto-aula);
+}
+
+.acoes_titulo .botao_imprimir {
+    background-color: #FFFFFF;
+    border: 0.8px solid var(--cor-borda-botao-aula);
+    color: var(--cor-texto-aula);
+}
+
+.botao_excluir {
+    color: #B3261E !important;
+}
+
+.botao_excluir:hover:not(:disabled) {
+    border-color: #B3261E !important;
+}
+
+/* Aulas planejadas usam um tom neutro; realizadas mantêm o azul */
+.status_pendente {
+    display: flex;
+    align-items: center;
+
+    padding: 4px 8px;
+
+    background: #F1F3F7;
+    border-radius: 4px;
+
+    font-family: var(--fonte-aula);
+    font-weight: 700;
+    font-size: 9.8px;
+    line-height: 15px;
+
+    color: var(--cor-texto-secundario-aula);
+}
+
+.acoes_aula button {
+    gap: 6px;
+}
+
+.aviso_erro {
+    margin-top: 18px;
+    padding: 12px 14px;
+
+    background-color: #FDECEA;
+    border: 1px solid #F5C2BE;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #B3261E;
+}
+
+.carregando {
+    margin-top: 25px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 14px;
+
+    color: var(--cor-texto-secundario-aula);
+}
+
+.estado_vazio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    margin-top: 40px;
+    padding: 50px 20px;
+    box-sizing: border-box;
+
+    background-color: #FFFFFF;
+    border: 0.8px solid var(--cor-borda-aula);
+
+    text-align: center;
+
+    color: var(--cor-texto-secundario-aula);
+}
+
+.estado_vazio h3 {
+    color: var(--cor-texto-aula);
+    font-family: var(--fonte-aula);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.estado_vazio p {
+    font-family: var(--fonte-aula);
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.estado_vazio svg {
+    color: var(--cor-borda-botao-aula);
+}
 /* Responsividade para celular */
 
 @media (max-width: 768px) {
@@ -593,6 +732,18 @@
         min-height: 46px;
         box-sizing: border-box;
         font-size: 13px;
+    }
+
+    .acoes_titulo {
+        width: 100%;
+        flex-wrap: wrap;
+        padding-top: 0;
+    }
+
+    .acoes_titulo button {
+        flex: 1;
+        min-width: 130px;
+        font-size: 12px;
     }
 
     .container_form {

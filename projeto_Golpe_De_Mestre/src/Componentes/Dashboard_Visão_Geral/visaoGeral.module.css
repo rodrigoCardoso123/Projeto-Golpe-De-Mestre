@@ -1465,3 +1465,167 @@
         width: 120px;
     }
 }
+/* ==========================================================================
+   ELEMENTOS QUE VIRARAM BOTÃO
+   Os cards, links e itens de lista são <button> agora, então precisam
+   neutralizar o estilo padrão de botão e manter o visual de link/card.
+   ========================================================================== */
+
+.card_informacoes,
+.item_ponto,
+.turma,
+.conteudo_agenda_titulo button,
+.titulo_acompanhamento button,
+.conteudo_sem_aulas button {
+    font-family: var(--fonte-corpo);
+    text-align: left;
+    cursor: pointer;
+}
+
+.card_informacoes {
+    border: none;
+}
+
+.card_informacoes:hover {
+    border-color: #173F73;
+}
+
+.item_ponto {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.item_ponto:hover .texto_ponto strong {
+    color: #173F73;
+}
+
+.turma {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.turma:hover .info_turma strong {
+    color: #173F73;
+}
+
+.conteudo_agenda_titulo button,
+.titulo_acompanhamento button,
+.conteudo_sem_aulas button {
+    background: none;
+    border: none;
+    padding: 0;
+
+    color: var(--cor-azul, #173F73);
+    font-size: inherit;
+    font-weight: 700;
+
+    text-decoration: underline;
+}
+
+/* Aulas listadas no dia da agenda */
+.lista_aulas_dia {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.item_aula_dia {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+
+    padding: 12px 16px;
+
+    background-color: #FFFFFF;
+    border: 0.8px solid #DFE5EE;
+    border-radius: 5px;
+
+    font-family: var(--fonte-corpo);
+    cursor: pointer;
+}
+
+.item_aula_dia:hover {
+    border-color: #173F73;
+}
+
+.item_aula_dia strong {
+    color: #173F73;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.item_aula_dia span {
+    color: #626B76;
+    font-size: 12px;
+}
+
+.item_comunicado {
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 0.8px solid #DFE5EE;
+}
+
+.item_comunicado:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.item_comunicado p {
+    color: #626B76;
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.item_comunicado h1 {
+    margin: 4px 0;
+    color: #1C1F24;
+    font-family: var(--fonte-corpo);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 23px;
+}
+
+.container_titulo_main button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.aviso_erro {
+    margin: 18px 0;
+    padding: 12px 14px;
+
+    background-color: #FDECEA;
+    border: 1px solid #F5C2BE;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #B3261E;
+}
+
+.carregando {
+    margin: 22px 0;
+    font-family: var(--fonte-corpo);
+    font-size: 14px;
+    color: #626B76;
+}
+
+@media (max-width: 768px) {
+    .container_titulo_main button {
+        width: 100%;
+    }
+}

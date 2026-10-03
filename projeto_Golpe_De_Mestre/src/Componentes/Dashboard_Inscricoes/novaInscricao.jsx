@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import estilo from "./novaInscricao.module.css";
 import { LuBell } from "react-icons/lu";
+import { criarInscricao } from "../../lib/inscricoesService";
 
 function NovaInscricao() {
     const navigate = useNavigate();
@@ -19,10 +20,14 @@ function NovaInscricao() {
     const [arquivoAluno, setArquivoAluno] = useState(null);
     const [arquivoResponsavel, setArquivoResponsavel] = useState(null);
 
+    const [erro, setErro] = useState("");
+    const [enviando, setEnviando] = useState(false);
+
     const inputArquivoAluno = useRef(null);
     const inputArquivoResponsavel = useRef(null);
 
     const atualizarCampo = (campo, valor) => {
+        setErro("");
         setForm((estadoAnterior) => ({
             ...estadoAnterior,
             [campo]: valor
@@ -36,10 +41,32 @@ function NovaInscricao() {
         }
     };
 
-    const aoSalvar = (evento) => {
+    // A inscrição entra como "em análise". Só depois da decisão da coordenação,
+    // na tela de análise, é que o aluno é criado de verdade.
+    const aoSalvar = async (evento) => {
         evento.preventDefault();
-        // Por enquanto só volta para a lista. Aqui entrará o envio para a API.
-        navigate("/Dashboard/inscricoes");
+        setErro("");
+        setEnviando(true);
+
+        if (!form.nomeAluno.trim()) {
+            setErro("Informe o nome do candidato.");
+            setEnviando(false);
+            return;
+        }
+
+        if (!form.telefone.trim()) {
+            setErro("Informe um telefone de contato.");
+            setEnviando(false);
+            return;
+        }
+
+        try {
+            await criarInscricao(form);
+            navigate("/Dashboard/inscricoes");
+        } catch (e) {
+            setErro(e.message);
+            setEnviando(false);
+        }
     };
 
     const dataHoje = new Date().toLocaleDateString("pt-BR", {
@@ -69,7 +96,7 @@ function NovaInscricao() {
 
             <section className={estilo.section_main}>
                 <nav className={estilo.breadcrumb}>
-                    <button onClick={() => navigate("/Dashboard/inscricoes")}>
+                    <button type="button" onClick={() => navigate("/Dashboard/inscricoes")}>
                         Inscrições
                     </button>
                     <span>/</span>
@@ -86,6 +113,8 @@ function NovaInscricao() {
                         * Campos obrigatórios. Nome do pai é opcional.
                     </small>
                 </div>
+
+                {erro && <p className={estilo.aviso_erro}>{erro}</p>}
 
                 <form onSubmit={aoSalvar}>
                     <div className={estilo.cartao}>
@@ -284,8 +313,12 @@ function NovaInscricao() {
                         >
                             Cancelar
                         </button>
-                        <button type="submit" className={estilo.botao_salvar}>
-                            Salvar inscrição
+                        <button
+                            type="submit"
+                            className={estilo.botao_salvar}
+                            disabled={enviando}
+                        >
+                            {enviando ? "Salvando..." : "Salvar inscrição"}
                         </button>
                     </div>
                 </form>

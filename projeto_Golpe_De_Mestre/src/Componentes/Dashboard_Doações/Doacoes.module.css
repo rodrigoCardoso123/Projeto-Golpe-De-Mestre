@@ -610,3 +610,224 @@
         min-width: 850px;
     }
 }
+/* ==========================================================================
+   AÇÕES E ESTADOS ADICIONADOS
+   ========================================================================== */
+
+.acoes_titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.acoes_titulo button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    height: 44px;
+    padding: 10px 16px;
+
+    border-radius: 5px;
+
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 19px;
+
+    cursor: pointer;
+}
+
+.acoes_titulo .botao_exportar {
+    background-color: #FFFFFF;
+    border: 0.8px solid #BAC3CF;
+    color: #1C1F24;
+}
+
+.acoes_titulo .botao_principal {
+    background-color: #173F73;
+    border: 1px solid transparent;
+    color: #FFFFFF;
+}
+
+.acoes_titulo button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* Totais do topo */
+.resumo_doacoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0 8px;
+}
+
+.resumo_doacoes div {
+    padding: 16px 18px;
+    background-color: #FFFFFF;
+    border: 0.8px solid #DFE5EE;
+    border-radius: 5px;
+}
+
+.resumo_doacoes small {
+    display: block;
+    color: #626B76;
+    font-family: var(--fonte-corpo);
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.resumo_doacoes strong {
+    display: block;
+    margin-top: 6px;
+    color: #1C1F24;
+    font-family: var(--fonte-corpo);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.badge_confirmada,
+.badge_pendente {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+.badge_confirmada {
+    background-color: #E7F6ED;
+    color: #1B5E33;
+}
+
+.badge_pendente {
+    background-color: #FEF3E2;
+    color: #8A5A00;
+}
+
+.acoes_doacao {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: flex-end;
+}
+
+.acoes_doacao button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    height: 30px;
+    padding: 0 10px;
+
+    background-color: #FFFFFF;
+    border: 0.8px solid #DFE5EE;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 12px;
+
+    color: #1C1F24;
+    cursor: pointer;
+}
+
+.acoes_doacao button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.acoes_doacao .botao_confirmar {
+    color: #1B5E33;
+    border-color: #B7E0C4;
+}
+
+.acoes_doacao .botao_excluir {
+    padding: 0 8px;
+    color: #B3261E;
+}
+
+.acoes_doacao .botao_excluir:hover {
+    border-color: #B3261E;
+}
+
+.rodape {
+    margin-top: 18px;
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    color: #626B76;
+}
+
+.aviso_erro {
+    margin: 18px 0;
+    padding: 12px 14px;
+
+    background-color: #FDECEA;
+    border: 1px solid #F5C2BE;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #B3261E;
+}
+
+.carregando {
+    margin: 22px 0;
+    font-family: var(--fonte-corpo);
+    font-size: 14px;
+    color: #626B76;
+}
+
+.estado_vazio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 50px 20px;
+    background-color: #FFFFFF;
+    border: 0.8px solid #DFE5EE;
+
+    text-align: center;
+    color: #626B76;
+}
+
+.estado_vazio h3 {
+    color: #1C1F24;
+    font-family: var(--fonte-corpo);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.estado_vazio p {
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.estado_vazio svg {
+    color: #BAC3CF;
+}
+
+@media (max-width: 768px) {
+    .resumo_doacoes {
+        grid-template-columns: 1fr;
+    }
+
+    .acoes_titulo {
+        flex-wrap: wrap;
+    }
+
+    .acoes_titulo button {
+        flex: 1;
+        min-width: 130px;
+    }
+}

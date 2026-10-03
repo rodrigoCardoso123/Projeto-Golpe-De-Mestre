@@ -613,3 +613,100 @@
     }
 
 }
+/* ==========================================================================
+   AÇÕES E ESTADOS ADICIONADOS
+   ========================================================================== */
+
+.botao_site,
+.botao_salvar,
+.botao_descartar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    cursor: pointer;
+}
+
+.botao_site:disabled,
+.botao_salvar:disabled,
+.botao_descartar:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.acoes_config {
+    display: flex;
+    gap: 12px;
+}
+
+.botao_descartar {
+    height: 44px;
+    padding: 0 20px;
+
+    background-color: #FFFFFF;
+    border: 1px solid #BAC3CF;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #1C1F24;
+}
+
+.campo input:disabled,
+.campo textarea:disabled {
+    background-color: #F1F3F7;
+    color: #626B76;
+    cursor: not-allowed;
+}
+
+.aviso_erro {
+    margin: 18px 0;
+    padding: 12px 14px;
+
+    background-color: #FDECEA;
+    border: 1px solid #F5C2BE;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #B3261E;
+}
+
+.aviso_sucesso {
+    margin: 18px 0;
+    padding: 12px 14px;
+
+    background-color: #E7F6ED;
+    border: 1px solid #B7E0C4;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #1B5E33;
+}
+
+.carregando {
+    margin: 22px 0;
+    font-family: var(--fonte-corpo);
+    font-size: 14px;
+    color: #626B76;
+}
+
+@media (max-width: 768px) {
+    .acoes_config {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .botao_descartar,
+    .botao_salvar {
+        width: 100%;
+    }
+}

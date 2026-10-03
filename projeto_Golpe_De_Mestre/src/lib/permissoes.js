@@ -14,6 +14,8 @@ export const PERMISSOES = {
   novoAluno: ["administrador"],
   editarAluno: ["administrador", "professor"],
   turmas: ["administrador", "professor", "responsavel"],
+  novaTurma: ["administrador"],
+  editarTurma: ["administrador", "professor"],
   diario: ["administrador", "professor", "responsavel"],
   presenca: ["administrador", "professor", "responsavel"],
   desenvolvimento: ["administrador", "professor"],

@@ -1000,3 +1000,137 @@
         height: 40px;
     }
 }
+/* ==========================================================================
+   AÇÕES E ESTADOS ADICIONADOS
+   ========================================================================== */
+
+.acoes_titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.acoes_titulo .botao_secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    height: 44px;
+    padding: 10px 16px;
+
+    background-color: #FFFFFF;
+    border: 0.8px solid #BAC3CF;
+    border-radius: 5px;
+
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 19px;
+
+    color: #1C1F24;
+    cursor: pointer;
+}
+
+.acoes_titulo .botao_secundario:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* O nome do aluno virou botão, então precisa neutralizar o estilo de link */
+.link_aluno {
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.avaliacao_pendente {
+    background-color: #FEF3E2;
+    color: #8A5A00;
+}
+
+.botao_avaliar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.aviso_erro {
+    margin: 18px 0;
+    padding: 12px 14px;
+
+    background-color: #FDECEA;
+    border: 1px solid #F5C2BE;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #B3261E;
+}
+
+.aviso_sucesso {
+    margin: 18px 0;
+    padding: 12px 14px;
+
+    background-color: #E7F6ED;
+    border: 1px solid #B7E0C4;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #1B5E33;
+}
+
+.carregando {
+    margin: 22px 0;
+    font-family: var(--fonte-corpo);
+    font-size: 14px;
+    color: #626B76;
+}
+
+.estado_vazio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 30px;
+    padding: 50px 20px;
+
+    background-color: #FFFFFF;
+    border: 0.8px solid #DFE5EE;
+
+    text-align: center;
+    color: #626B76;
+}
+
+.estado_vazio h3 {
+    color: #1C1F24;
+    font-family: var(--fonte-corpo);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.estado_vazio p {
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.estado_vazio svg {
+    color: #BAC3CF;
+}
+
+@media (max-width: 768px) {
+    .acoes_titulo {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+}

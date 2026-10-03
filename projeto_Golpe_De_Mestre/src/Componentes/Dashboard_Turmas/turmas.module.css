@@ -859,3 +859,142 @@
         width: 100%;
     }
 }
+/* ==========================================================================
+   AÇÕES E ESTADOS ADICIONADOS
+   ========================================================================== */
+
+.acoes_titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.acoes_titulo button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: auto;
+    height: 44px;
+    padding: 10px 16px;
+
+    border-radius: 5px;
+
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 19px;
+
+    cursor: pointer;
+}
+
+.acoes_titulo .botao_secundario {
+    background-color: #FFFFFF;
+    border: 0.8px solid #BAC3CF;
+    color: #1C1F24;
+}
+
+.acoes_titulo .botao_secundario:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* A situação virou botão: clicar ativa/inativa a turma. */
+.situacao {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.situacao:hover {
+    border-color: #173F73;
+}
+
+.rodape_card .botao_editar,
+.rodape_card .botao_excluir {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.rodape_card .botao_excluir {
+    color: #B3261E;
+}
+
+.rodape_card .botao_excluir:hover {
+    border-color: #B3261E;
+}
+
+.rotulo_lotacao span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.aviso_erro {
+    margin: 18px 0;
+    padding: 12px 14px;
+
+    background-color: #FDECEA;
+    border: 1px solid #F5C2BE;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #B3261E;
+}
+
+.carregando {
+    margin: 22px 0;
+    font-family: var(--fonte-corpo);
+    font-size: 14px;
+    color: #626B76;
+}
+
+.estado_vazio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 30px;
+    padding: 50px 20px;
+
+    background-color: #FFFFFF;
+    border: 0.8px solid #DFE5EE;
+
+    text-align: center;
+    color: #626B76;
+}
+
+.estado_vazio h3 {
+    color: #1C1F24;
+    font-family: var(--fonte-corpo);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.estado_vazio p {
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.estado_vazio svg {
+    color: #BAC3CF;
+}
+
+@media (max-width: 768px) {
+    .acoes_titulo {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .acoes_titulo button {
+        flex: 1;
+        min-width: 130px;
+    }
+}

@@ -833,3 +833,152 @@
         line-height: 17px;
     }
 }
+/* ==========================================================================
+   AÇÕES E ESTADOS ADICIONADOS
+   ========================================================================== */
+
+.acoes_titulo button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.acoes_titulo .botao_exportar {
+    background-color: #FFFFFF;
+    border: 1px solid #BAC3CF;
+    color: #1C1F24;
+}
+
+.acoes_titulo .botao_exportar:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.acoes_titulo .botao_novo {
+    background-color: #173F73;
+    border: 1px solid transparent;
+    color: #FFFFFF;
+}
+
+.select_cargo {
+    height: 34px;
+    padding: 0 10px;
+
+    border: 1px solid #C9D2DC;
+    border-radius: 4px;
+
+    background-color: #FFFFFF;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+
+    color: #1C1F24;
+    cursor: pointer;
+}
+
+.select_cargo:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.select_cargo:focus {
+    outline: none;
+    border-color: #173F73;
+}
+
+.status_inativo {
+    display: inline-flex;
+    padding: 4px 10px;
+    border-radius: 4px;
+
+    background-color: #F1F3F7;
+
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 11px;
+
+    color: #626B76;
+}
+
+.acoes_tabela button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.acoes_tabela button:disabled {
+    opacity: 0.55;
+    cursor: wait;
+}
+
+.atividade_recente h2 {
+    margin-bottom: 6px;
+}
+
+.grade_permissoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.item_permissao {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    padding: 12px 14px;
+
+    background-color: #F8F9FB;
+    border: 1px solid #DFE5EE;
+    border-radius: 4px;
+}
+
+.item_permissao strong {
+    color: #1C1F24;
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: capitalize;
+    line-height: 18px;
+}
+
+.item_permissao span {
+    color: #626B76;
+    font-family: var(--fonte-corpo);
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.aviso_erro {
+    margin: 18px 0;
+    padding: 12px 14px;
+
+    background-color: #FDECEA;
+    border: 1px solid #F5C2BE;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #B3261E;
+}
+
+@media (max-width: 768px) {
+    .grade_permissoes {
+        grid-template-columns: 1fr;
+    }
+
+    .acoes_titulo {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .acoes_tabela {
+        flex-wrap: wrap;
+    }
+}

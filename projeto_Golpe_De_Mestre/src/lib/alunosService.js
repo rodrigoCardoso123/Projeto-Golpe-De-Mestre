@@ -33,7 +33,11 @@ function converterAluno(linha, presencas = 0, totalPresencas = 0) {
     nome: linha.nome,
     categoria: linha.turmas?.programa ?? "—",
     turma: linha.turmas?.nome ?? "Sem turma",
+    turmaId: linha.turma_id,
     situacao: ROTULO_SITUACAO[linha.situacao] ?? "Ativo",
+    situacaoBruta: linha.situacao,
+    faixaBruta: linha.faixa,
+    idade: linha.idade,
     presenca: percentual,
     faltas: Math.max(totalPresencas - presencas, 0),
     avaliacoes: 0,
@@ -61,15 +65,85 @@ function converterAluno(linha, presencas = 0, totalPresencas = 0) {
 const SELECT = "*, turmas(nome, programa, perfis(nome))";
 
 export async function listarAlunos() {
+  // Traz as presenças junto para calcular o percentual de cada aluno. Sem
+  // isso a coluna "Presença" da listagem e das faixas mostraria sempre 0%.
   const { data, error } = await supabase
     .from("alunos")
-    .select(SELECT)
+    .select(`${SELECT}, presencas(status)`)
     .order("nome");
 
   if (error) throw error;
 
+  return (data ?? []).map((linha) => {
+    const lista = linha.presencas ?? [];
+    const comparecidas = lista.filter((p) => p.status === "presente").length;
+
+    return converterAluno(linha, comparecidas, lista.length);
+  });
+}
+
+// Alunos de uma faixa específica, usado pela tela de desenvolvimento.
+export async function listarAlunosPorFaixa(faixa) {
+  let consulta = supabase.from("alunos").select(SELECT).order("nome");
+
+  if (faixa) consulta = consulta.eq("faixa", faixa);
+
+  const { data, error } = await consulta;
+  if (error) throw error;
+
   return (data ?? []).map((linha) => converterAluno(linha));
 }
+
+// Gradua o aluno: grava a faixa no cadastro e registra o histórico, para que
+// a evolução não dependa só do valor atual.
+export async function graduarAluno({ alunoId, faixa, graus }) {
+  const { data: sessao } = await supabase.auth.getSession();
+
+  const { error: erroAluno } = await supabase
+    .from("alunos")
+    .update({ faixa, graus })
+    .eq("id", alunoId);
+
+  if (erroAluno) throw erroAluno;
+
+  const { error: erroHistorico } = await supabase.from("graduacoes").insert({
+    aluno_id: alunoId,
+    faixa,
+    graus,
+    data: new Date().toISOString().slice(0, 10),
+    registrado_por: sessao?.user?.id ?? null,
+  });
+
+  if (erroHistorico) throw erroHistorico;
+}
+
+// Histórico de graduações, do mais recente para o mais antigo.
+export async function listarGraduacoes(alunoId) {
+  const { data, error } = await supabase
+    .from("graduacoes")
+    .select("*, perfis(nome)")
+    .eq("aluno_id", alunoId)
+    .order("data", { ascending: false });
+
+  if (error) throw error;
+  return data ?? [];
+}
+
+// Ativa/inativa o aluno sem tocar nos demais campos.
+export async function alternarSituacaoAluno(id, situacao) {
+  const { error } = await supabase
+    .from("alunos")
+    .update({ situacao: situacao === "Inativo" ? "inativo" : "ativo" })
+    .eq("id", id);
+
+  if (error) throw error;
+}
+
+// Lista de faixas com os rótulos que as telas exibem.
+export const FAIXAS = Object.entries(ROTULO_FAIXA).map(([valor, nome]) => ({
+  valor,
+  nome,
+}));
 
 export async function buscarAlunoPorId(id) {
   const { data, error } = await supabase

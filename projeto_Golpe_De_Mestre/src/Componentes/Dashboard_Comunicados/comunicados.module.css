@@ -503,3 +503,124 @@
         gap: 14px;
     }
 }
+
+/* ==========================================================================
+   AÇÕES E ESTADOS ADICIONADOS
+   ========================================================================== */
+
+.acoes_titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.acoes_titulo button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    height: 44px;
+    padding: 10px 16px;
+
+    border-radius: 5px;
+
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 19px;
+
+    cursor: pointer;
+}
+
+.acoes_titulo .botao_secundario {
+    background-color: #FFFFFF;
+    border: 0.8px solid #BAC3CF;
+    color: #1C1F24;
+}
+
+.acoes_titulo .botao_secundario:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.acoes_titulo .botao_novo_comunicado {
+    width: auto;
+    background-color: #173F73;
+    border: 1px solid transparent;
+    color: #FFFFFF;
+}
+
+.badge_rascunho {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 4px;
+
+    background-color: #F1F3F7;
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 15px;
+
+    color: #626B76;
+}
+
+.card_acoes button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.card_acoes .botao_excluir {
+    color: #B3261E;
+}
+
+.card_acoes .botao_excluir:hover {
+    border-color: #B3261E;
+}
+
+.botao_lido {
+    background-color: #E7F6ED;
+    border-color: #B7E0C4;
+    color: #1B5E33;
+}
+
+.aviso_erro {
+    margin: 18px 0;
+    padding: 12px 14px;
+
+    background-color: #FDECEA;
+    border: 1px solid #F5C2BE;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #B3261E;
+}
+
+.carregando {
+    margin: 22px 0;
+    font-family: var(--fonte-corpo);
+    font-size: 14px;
+    color: #626B76;
+}
+
+@media (max-width: 768px) {
+    .acoes_titulo {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .acoes_titulo button {
+        flex: 1;
+        min-width: 130px;
+    }
+
+    .card_acoes {
+        flex-wrap: wrap;
+    }
+}

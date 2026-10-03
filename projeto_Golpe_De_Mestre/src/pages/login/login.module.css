@@ -131,6 +131,7 @@
 .banner a{
     text-decoration: none;
     color: #AEB9C9;
+    cursor: pointer;
     font-family: font-body;
     font-weight: 400;
     font-style: Regular;
@@ -220,6 +221,7 @@
     width: 100%;
     min-height: 44px;
     opacity: 1;
+    cursor: text;
     border: #AFB9C7 1px solid;
     background-color: #FFFFFF;
     color: #000000;
@@ -245,6 +247,7 @@
 }
 .container_login a{
     color: #173F73;
+    cursor: pointer;
     font-family: font-body;
     font-weight: 700;
     font-style: Bold;
@@ -258,6 +261,7 @@
     width: 100%;
     min-height: 44px;
     opacity: 1;
+    cursor: pointer;
     gap: 10px;
     padding: 10px 16px;
     background-color: #173F73;
@@ -390,6 +394,23 @@
         border-radius: 8px;
     }
 }
+/* Cursor do formulario definido em todas as areas.
+   Sem isso, qualquer regra herdada que zere o cursor (cursor: none)
+   faz a seta do mouse sumir ao passar sobre o formulario. */
+.mainContainer,
+.banner,
+.container_imgbanner,
+.section_login,
+.container_login,
+.container_login h1,
+.container_login h2,
+.container_login p,
+.container_login form,
+.container_login form div,
+.container_login label{
+    cursor: auto;
+}
+
 @media (min-width: 768px) and (max-width: 1050px){
     .banner{
         justify-content: center;

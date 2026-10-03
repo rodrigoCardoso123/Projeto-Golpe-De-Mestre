@@ -450,3 +450,219 @@
         gap: 14px;
     }
 }
+
+/* ==========================================================================
+   AÇÕES, RESPOSTAS E ESTADOS ADICIONADOS
+   ========================================================================== */
+
+.acoes_titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.acoes_titulo button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    height: 44px;
+    padding: 10px 16px;
+
+    background-color: #FFFFFF;
+    border: 0.8px solid #BAC3CF;
+    border-radius: 5px;
+
+    font-family: var(--fonte-corpo);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 19px;
+
+    color: #1C1F24;
+    cursor: pointer;
+}
+
+.acoes_titulo button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.resumo_solicitacoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0 8px;
+}
+
+.resumo_solicitacoes div {
+    padding: 16px 18px;
+    background-color: #FFFFFF;
+    border: 0.8px solid #DFE5EE;
+    border-radius: 5px;
+}
+
+.resumo_solicitacoes small {
+    display: block;
+    color: #626B76;
+    font-family: var(--fonte-corpo);
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.resumo_solicitacoes strong {
+    display: block;
+    margin-top: 6px;
+    color: #1C1F24;
+    font-family: var(--fonte-corpo);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.card_situacao {
+    background-color: #F1F3F7;
+    color: #626B76;
+}
+
+.card_resolvida {
+    background-color: #E7F6ED;
+    color: #1B5E33;
+}
+
+/* Resposta já enviada, mostrada acima das ações */
+.resposta_registrada {
+    margin: 14px 0;
+    padding: 14px 16px;
+
+    background-color: #F8F9FB;
+    border-left: 3px solid #173F73;
+    border-radius: 4px;
+}
+
+.resposta_registrada strong {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #173F73;
+    font-family: var(--fonte-corpo);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.resposta_registrada p {
+    color: #1C1F24;
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 19px;
+    white-space: pre-wrap;
+}
+
+/* Caixa de resposta que abre dentro do card */
+.caixa_resposta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 0.8px solid #DFE5EE;
+}
+
+.caixa_resposta label {
+    color: #1C1F24;
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.caixa_resposta textarea {
+    width: 100%;
+    padding: 12px 14px;
+
+    border: 1px solid #AFB9C7;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 14px;
+    line-height: 20px;
+    resize: vertical;
+}
+
+.caixa_resposta textarea:focus {
+    outline: none;
+    border-color: #173F73;
+}
+
+.caixa_resposta .botao_confirmar {
+    align-self: flex-start;
+
+    height: 42px;
+    padding: 0 20px;
+
+    background-color: #173F73;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.caixa_resposta .botao_confirmar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.card_acoes button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.aviso_erro {
+    margin: 18px 0;
+    padding: 12px 14px;
+
+    background-color: #FDECEA;
+    border: 1px solid #F5C2BE;
+    border-radius: 4px;
+
+    font-family: var(--fonte-corpo);
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #B3261E;
+}
+
+.carregando {
+    margin: 22px 0;
+    font-family: var(--fonte-corpo);
+    font-size: 14px;
+    color: #626B76;
+}
+
+@media (max-width: 768px) {
+    .resumo_solicitacoes {
+        grid-template-columns: 1fr;
+    }
+
+    .acoes_titulo {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .acoes_titulo button {
+        flex: 1;
+        min-width: 130px;
+    }
+
+    .card_acoes {
+        flex-wrap: wrap;
+    }
+}

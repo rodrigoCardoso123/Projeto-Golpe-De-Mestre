@@ -171,6 +171,15 @@ create table if not exists public.aulas_diario (
   criado_em timestamptz not null default now()
 );
 
+-- Situação do encontro: planejada vira realizada quando a aula acontece.
+do $$ begin
+  create type public.situacao_aula as enum ('planejada', 'realizada');
+exception when duplicate_object then null; end $$;
+
+alter table public.aulas_diario add column if not exists situacao public.situacao_aula not null default 'planejada';
+alter table public.aulas_diario add column if not exists horario text;
+alter table public.aulas_diario add column if not exists objetivos text;
+
 -- ============================================================================
 -- 9. ATIVIDADES E COMUNICADOS
 -- ============================================================================
@@ -184,6 +193,22 @@ create table if not exists public.atividades (
   criado_em timestamptz not null default now()
 );
 
+-- Tipo da proposta e prazo de entrega, usados nos cards da tela de Atividades.
+alter table public.atividades add column if not exists tipo text not null default 'pratica';
+alter table public.atividades add column if not exists prazo date;
+alter table public.atividades add column if not exists criado_por uuid references public.perfis (id) on delete set null;
+
+-- Entregas das atividades: uma linha por aluno que entregou.
+create table if not exists public.atividade_entregas (
+  id uuid primary key default gen_random_uuid(),
+  atividade_id uuid not null references public.atividades (id) on delete cascade,
+  aluno_id uuid not null references public.alunos (id) on delete cascade,
+  entregue_em timestamptz,
+  comentario text,
+  criado_em timestamptz not null default now(),
+  unique (atividade_id, aluno_id)
+);
+
 create table if not exists public.comunicados (
   id uuid primary key default gen_random_uuid(),
   titulo text not null,
@@ -191,6 +216,15 @@ create table if not exists public.comunicados (
   situacao public.situacao_publicacao not null default 'rascunho',
   criado_por uuid references public.perfis (id) on delete set null,
   criado_em timestamptz not null default now()
+);
+
+-- Leitura confirmada por perfil (o botão "Confirmar leitura" da tela).
+create table if not exists public.comunicados_leituras (
+  id uuid primary key default gen_random_uuid(),
+  comunicado_id uuid not null references public.comunicados (id) on delete cascade,
+  perfil_id uuid not null references public.perfis (id) on delete cascade,
+  lido_em timestamptz not null default now(),
+  unique (comunicado_id, perfil_id)
 );
 
 -- ============================================================================
@@ -206,6 +240,10 @@ create table if not exists public.solicitacoes (
   criado_em timestamptz not null default now()
 );
 
+-- Resposta da equipe à solicitação, registrada pela tela de Solicitações.
+alter table public.solicitacoes add column if not exists resposta text;
+alter table public.solicitacoes add column if not exists respondido_em timestamptz;
+
 -- ============================================================================
 -- 11. VISITAS (formulário público da Home alimenta esta tabela)
 -- ============================================================================
@@ -220,6 +258,10 @@ create table if not exists public.visitas (
   criado_em timestamptz not null default now()
 );
 
+-- Programa, horário e observações que a tela de Visitas exibe por visita.
+alter table public.visitas add column if not exists programa text;
+alter table public.visitas add column if not exists horario text;
+
 -- ============================================================================
 -- 12. DOAÇÕES / APOIADORES
 -- ============================================================================
@@ -231,6 +273,24 @@ create table if not exists public.doacoes (
   data date not null default current_date,
   situacao public.situacao_doacao not null default 'pendente',
   anonima boolean not null default false,
+  criado_em timestamptz not null default now()
+);
+
+-- Forma de pagamento, recorrência e observação mostradas na tabela da tela.
+alter table public.doacoes add column if not exists forma text not null default 'Pix';
+alter table public.doacoes add column if not exists recorrente boolean not null default false;
+alter table public.doacoes add column if not exists observacao text;
+
+-- ============================================================================
+-- 12b. APOIADORES (logos exibidos na prévia pública do site)
+-- ============================================================================
+create table if not exists public.apoiadores (
+  id uuid primary key default gen_random_uuid(),
+  nome text not null,
+  categoria text,
+  site text,
+  caminho_logo text,
+  situacao public.situacao_pessoa not null default 'ativo',
   criado_em timestamptz not null default now()
 );
 
@@ -359,6 +419,9 @@ alter table public.solicitacoes            enable row level security;
 alter table public.visitas                 enable row level security;
 alter table public.doacoes                 enable row level security;
 alter table public.lancamentos             enable row level security;
+alter table public.apoiadores              enable row level security;
+alter table public.atividade_entregas      enable row level security;
+alter table public.comunicados_leituras    enable row level security;
 alter table public.notificacoes            enable row level security;
 alter table public.configuracoes           enable row level security;
 
@@ -493,6 +556,33 @@ drop policy if exists "admin_gerencia_lancamentos" on public.lancamentos;
 create policy "admin_gerencia_lancamentos" on public.lancamentos
   for all to authenticated using (public.eh_admin()) with check (public.eh_admin());
 
+-- ATIVIDADE_ENTREGAS: equipe gerencia; responsável vê as dos próprios alunos
+drop policy if exists "equipe_gerencia_entregas" on public.atividade_entregas;
+create policy "equipe_gerencia_entregas" on public.atividade_entregas
+  for all to authenticated using (public.eh_equipe()) with check (public.eh_equipe());
+
+drop policy if exists "familia_le_entregas" on public.atividade_entregas;
+create policy "familia_le_entregas" on public.atividade_entregas
+  for select to authenticated using (public.eh_responsavel_do(aluno_id));
+
+-- COMUNICADOS_LEITURAS: cada um confirma a própria leitura; equipe vê todas
+drop policy if exists "propria_confirma_leitura" on public.comunicados_leituras;
+create policy "propria_confirma_leitura" on public.comunicados_leituras
+  for insert to authenticated with check (perfil_id = auth.uid());
+
+drop policy if exists "ver_leituras" on public.comunicados_leituras;
+create policy "ver_leituras" on public.comunicados_leituras
+  for select to authenticated using (public.eh_equipe() or perfil_id = auth.uid());
+
+-- APOIADORES: equipe gerencia; o público lê os ativos (prévia do site)
+drop policy if exists "equipe_gerencia_apoiadores" on public.apoiadores;
+create policy "equipe_gerencia_apoiadores" on public.apoiadores
+  for all to authenticated using (public.eh_equipe()) with check (public.eh_equipe());
+
+drop policy if exists "publico_le_apoiadores_ativos" on public.apoiadores;
+create policy "publico_le_apoiadores_ativos" on public.apoiadores
+  for select to anon, authenticated using (situacao = 'ativo');
+
 -- NOTIFICAÇÕES: cada perfil vê e marca as suas
 drop policy if exists "ver_notificacoes_proprias" on public.notificacoes;
 create policy "ver_notificacoes_proprias" on public.notificacoes
@@ -517,6 +607,18 @@ create policy "admin_gerencia_config" on public.configuracoes
 insert into storage.buckets (id, name, public)
 values ('documentos-alunos', 'documentos-alunos', false)
 on conflict (id) do nothing;
+
+-- Bucket público dos logos dos apoiadores: a prévia do site precisa exibi-los
+-- sem autenticação, por isso public = true.
+insert into storage.buckets (id, name, public)
+values ('apoiadores-logos', 'apoiadores-logos', true)
+on conflict (id) do nothing;
+
+drop policy if exists "equipe_gerencia_logos_apoiadores" on storage.objects;
+create policy "equipe_gerencia_logos_apoiadores" on storage.objects
+  for all to authenticated
+  using (bucket_id = 'apoiadores-logos' and public.eh_equipe())
+  with check (bucket_id = 'apoiadores-logos' and public.eh_equipe());
 
 -- Equipe gerencia os documentos do bucket
 drop policy if exists "equipe_gerencia_documentos" on storage.objects;
@@ -561,6 +663,13 @@ create index if not exists idx_lancamentos_data on public.lancamentos (data);
 create index if not exists idx_doacoes_situacao on public.doacoes (situacao);
 create index if not exists idx_inscricoes_situacao on public.inscricoes (situacao);
 create index if not exists idx_notificacoes_perfil on public.notificacoes (perfil_id, lida);
+create index if not exists idx_aulas_diario_data on public.aulas_diario (data desc);
+create index if not exists idx_atividades_turma on public.atividades (turma_id);
+create index if not exists idx_atividade_entregas_atividade on public.atividade_entregas (atividade_id);
+create index if not exists idx_comunicados_leituras_comunicado on public.comunicados_leituras (comunicado_id);
+create index if not exists idx_solicitacoes_situacao on public.solicitacoes (situacao);
+create index if not exists idx_visitas_data on public.visitas (data_visita);
+create index if not exists idx_apoiadores_situacao on public.apoiadores (situacao);
 
 -- ============================================================================
 -- 22. GESTÃO DE ACESSOS — criação de contas pela tela de Equipe e Acesso
